@@ -1,0 +1,147 @@
+@import "/src/styles.less";
+//шрифт логотипа
+@import url(https://fonts.googleapis.com/css?family=Russo+One);  
+//основной шрифт меню
+@import url('https://fonts.googleapis.com/css?family=Arimo');  
+
+header{ 
+    padding: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    //border-bottom: 1px @color_grey solid;    
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+  }
+a {
+    text-decoration: none;
+}
+
+.menu{
+    .top-menu {
+        //background: rgba(34,34,34,.2);
+        background: @color_white;
+        .menu-main {            
+            display:flex;            
+            margin: 0;
+            padding: 0;
+            li{
+                margin:1px;
+            }
+            a {
+                display: block;
+                padding: 20px 10px;
+                font-size: 14px;
+                letter-spacing: 2px;
+                font-family: 'Arimo', sans-serif;
+                font-weight: bold;
+                color: @color_text_grey;
+                transition: .3s linear;
+                &:hover {
+                    background: rgba(0,0,0,.3);
+                    color:@color_white;
+                }
+            }
+            &:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            li.help{                
+                background: @color_green;
+                border-radius: 10px;
+                a{
+                    color: @color_text_grey;
+                    font-size: 14px;
+                    &:hover {
+                        background: rgba(0,0,0,.3);
+                        border-radius: 10px;
+                        color:@color_white;
+                    }
+                }                
+            }
+        }
+    }    
+}
+
+//Логотип сайта    
+.logotype,
+.logotype:hover,
+.logotype div {
+    position:relative;
+    display:inline-block;
+    font-size:36px;
+    color: @color_green;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.2);
+    font-family: 'Russo One', sans-serif;
+    font-weight: 300;
+    text-decoration:none;
+    margin:20px 0 20px 26px;
+    line-height:16px;
+}
+.logotype div {
+    display:block;
+}
+.logotype b {
+    letter-spacing:1px;
+    font-size:44px;
+    color:@color_lavender;
+    -webkit-text-stroke: 1px @color_grey;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    font-weight: 600;
+    background: @color_white;
+}
+.logotype span {
+    text-shadow: 1px 2px 1px rgba(0,0,0,0.2);
+    display:block;
+    float:right;
+    font-size:20px;
+    color:@color_text_grey;
+    line-height:6px;
+}
+.logotype:before {
+    position:absolute;
+    top:-12px;
+    left:0;
+    content: "";
+    border:8px solid @color_green;
+    width:66px;
+    height:66px;
+    border-radius:100%;
+    transition: all 0.3s ease;
+    z-index:-1; 
+    box-sizing: content-box;  
+}
+.logotype:hover:before {
+    transform: scale(1.1);
+    border:8px solid @color_text_green;
+}
+@media (max-width:600px) {
+    .logotype,
+    .logotype:hover,
+    .logotype div {
+        font-size:26px;
+        line-height:6px;
+        margin:20px 0 20px 20px;
+    }
+    .logotype b {
+        font-size:34px;
+    }
+    .logotype span {
+        font-size:16px;
+        line-height:4px;
+    }
+    .logotype:before {
+        top:-9px;
+        border:6px solid @color_green;
+        width:52px;
+        height:52px;
+    }
+    .logotype:hover:before {
+        border:6px solid @color_text_green;
+    }
+}
