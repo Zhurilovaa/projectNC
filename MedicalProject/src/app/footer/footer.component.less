@@ -1,8 +1,12 @@
 @import "/src/styles.less";
+
+a {
+    text-decoration: none;
+}
 footer{
-    position:relative;
-    bottom: 0;
-    align-self: center;
+    //position:relative;
+    //bottom: 0;
+    //align-self: center;
     //border: 1px solid black; 
     background: linear-gradient(@color_white, @color_green);  
     display: flex;
@@ -15,9 +19,48 @@ footer{
         display: flex;
         flex-flow: row wrap;
         justify-content: space-around;
-        .info_fond__menu{
-            display:flex;
-            flex-flow: column wrap;
+        .info_fond__name{
+            .head{
+                letter-spacing:1px;
+                font-size: 250%;
+                color:@color_lavender_text;
+                //text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+                text-shadow: 2px 1px 1px @color_green;
+                font-weight: 600;
+            }
+            .text{
+                font-size: 170%;
+                transition-duration: 0.5s; 
+                letter-spacing: 2px;
+                font-family: 'Arimo', sans-serif;
+                font-weight: bold;
+                color: @color_text_green;
+                
+            }
+        }
+        .contact{
+            .number {
+                color: #000;
+                font-size: 16px;
+                //font-weight: 900;
+                .phone {
+                    color: @color_text_green;
+                    font-family: 'Arimo', sans-serif;
+                    font-size: 1.1em;
+                }
+            }
+            .index{
+                color: @color_text_grey;
+                font-family: 'Arimo', sans-serif;
+                font-size: 1.1em; 
+            }     
+            .email{
+                .e-mail{                    
+                    color: @color_orange;
+                    font-family: 'Arimo', sans-serif;
+                    font-size: 1.1em;
+                }
+            }       
         }
     }
 }

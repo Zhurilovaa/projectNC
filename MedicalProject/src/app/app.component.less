@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Arimo');  
 .content{
     position: relative; 
+    height: 100%;
 }
 .main_page{
     display: flex;
@@ -9,10 +10,11 @@
     align-items: center;
 
     .help_main{
-        width: 90%;
-        height: 45%;        
+        width: 80%;
+        //height: 45%;        
         display: flex;
-        flex-flow: row wrap;
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-between;
         background: linear-gradient(@color_white, @color_lavender);  
 
@@ -75,8 +77,31 @@
             width: 40%;
             img{
                width:100%; 
+               min-width: 245px;
             }
+        }    
+    }
+    .infoFond{
+        width: 80%;
+        //height: 45%;        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(@color_white, @color_lavender, @color_white,); 
+        padding: 2%;
+        .text{
+            width:50%;
+            line-height: 150%;
+            font-size: 110%;
+            letter-spacing: 2px;
+            text-align: center;
+            font-family: 'Arimo', sans-serif;
+            font-weight: bold;
+            color: @color_text_grey; 
+        } 
+        .infoVideo{
+            width:50%;
         }
-    
     }
 }
