@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Child } from 'src/app/server/childDate/child';
 import { FondService } from 'src/app/server/service/fond.service';
 
@@ -11,12 +11,14 @@ import { FondService } from 'src/app/server/service/fond.service';
 export class ChildrenComponent{
 
   children: Child[] = [];
+  public childTemp: Observable<Child[]> = of([]);
 
   constructor(private fondServ: FondService) {}
+ 
 
-  ngOnInit(){
-
-    
-
+  ngOnInit(){    
+    this.children = this.fondServ.getData(); 
+    //this.childTemp = this.fondServ.getChildL();
+    this.childTemp = this.fondServ.getServData();
   }  
 }

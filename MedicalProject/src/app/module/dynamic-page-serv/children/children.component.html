@@ -16,6 +16,16 @@
                     <td>{{ch.donatSum}}</td>
                 </tr>
             </table>
+            <table>
+                <tr *ngFor="let ch of childTemp|async">
+                    <td>{{ch.id}}</td>
+                    <td>{{ch.name}}</td>
+                    <td>{{ch.patronym}}</td>
+                    <td>{{ch.surname}}</td>
+                    <td>{{ch.needSum}}</td>
+                    <td>{{ch.donatSum}}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
