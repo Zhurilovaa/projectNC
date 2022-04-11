@@ -4,6 +4,7 @@
 //основной шрифт меню
 @import url('https://fonts.googleapis.com/css?family=Arimo');  
 
+
 header{ 
     padding: 2%;
     display: flex;
@@ -28,13 +29,58 @@ a {
             display:flex;            
             margin: 0;
             padding: 0;
+            .submenu{
+                position: absolute;
+                z-index: 4;
+                left: 50%;
+                top: 100%;
+                min-width: 100%;
+                max-width: 200%;
+                margin-top: 5%;
+                text-align: center;
+                background: @color_white;
+                border-radius: 5px;
+                box-shadow: 0 0 30px rgba(0,0,0,.2);
+                visibility: hidden;
+                opacity: 0;
+                transform: translate(-50%, 20px);
+                transition: .3s;
+                .submenu_link { 
+                    font-family:  'Arimo', sans-serif;
+                    //white-space: nowrap;
+                    font-size: 100%;
+                    .link{                        
+                        color: @color_text_grey;
+                    }
+                    font-weight: bold;
+                    padding: 10px 10px;
+                    letter-spacing: 2px;
+                    transition: .3s linear;
+                    &:hover {
+                        background: rgba(0,0,0,.3);
+                        .link,.link_help{
+                            color:@color_text_green; 
+                        }
+                    }  
+                    .link_help{
+                        font-size: larger;
+                        color: @color_orange;
+                    }                                     
+                } 
+            }            
             .menu_point{
                 margin:1px;
+                position: relative;  
+                &:hover .submenu{
+                    visibility: visible;
+                    opacity: 1;
+                    transform: translate(-50%, 0);
+                }              
             }
             .menu_link { 
                 display: block;
                 padding: 20px 10px;
-                font-size: 14px;
+                font-size: 100%;
                 letter-spacing: 2px;
                 font-family: 'Arimo', sans-serif;
                 font-weight: bold;
@@ -42,28 +88,28 @@ a {
                 transition: .3s linear; 
                 &:hover {
                     background: rgba(0,0,0,.3);
-                    color:@color_white;
-                    
-                } 
+                    color:@color_white;                                      
+                }                 
             }
             &:after {
                 content: "";
                 display: table;
                 clear: both;
             }
-            .help{                
-                background: @color_green;
-                border-radius: 10px;
+            .help{ 
                 .menu_link{
+                    background: @color_green;
+                    border-radius: 10px;
                     color: @color_text_grey;
                     font-size: 14px;
                     &:hover {
-                        background: rgba(0,0,0,.3);
+                        background: rgba(175, 83, 8, 0.651);
                         border-radius: 10px;
                         color:@color_white;
                     }
-                }                
+                }                      
             }
+            
         }
     }    
 }
