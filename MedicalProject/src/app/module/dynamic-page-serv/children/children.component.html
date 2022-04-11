@@ -1,4 +1,21 @@
 
 <div class="main">
     <p>children works!</p>
+
+    <div class="main">
+        <p>about-found works!</p>
+    
+        <div class="panel">
+            <table>
+                <tr *ngFor="let ch of children">
+                    <td>{{ch.id}}</td>
+                    <td>{{ch.name}}</td>
+                    <td>{{ch.patronym}}</td>
+                    <td>{{ch.surname}}</td>
+                    <td>{{ch.needSum}}</td>
+                    <td>{{ch.donatSum}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>

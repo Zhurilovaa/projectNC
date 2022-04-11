@@ -28,4 +28,21 @@
                 Мы вместе с вами можем им помочь!</p>
         </div>        
     </div>
+
+    <div class="panel">
+        <div><input [(ngModel)]="child.donatSum" placeholder = "Сумма платежа" />
+            <button (click)="addChild(child)">Добавить</button>
+        </div>
+        <table>
+            <tr *ngFor="let ch of childList">
+                <td>{{ch.id}}</td>
+                <td>{{ch.name}}</td>
+                <td>{{ch.patronym}}</td>
+                <td>{{ch.surname}}</td>
+                <td>{{ch.needSum}}</td>
+                <td>{{ch.donatSum}}</td>
+            </tr>
+        </table>
+    </div>
+    
 </div>
