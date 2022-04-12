@@ -9,6 +9,12 @@ import { FondService } from 'src/app/server/service/fond.service';
   styleUrls: ['./about-found.component.less']
 })
 export class AboutFoundComponent{
+
+  public content:string = 'aboutFond';
+
+  changeContent(con:string){
+    this.content = con;
+  }
   
   childList: Child[] = [];
 
