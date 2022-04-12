@@ -1,19 +1,23 @@
-<div class="main">
-    <p>about-found works!</p>
+<div class="main_about_fond">
 
-    <div class="panel">
-        <div><input [(ngModel)]="child.donatSum" placeholder = "Сумма платежа" />
-            <button (click)="addChild(child)">Добавить</button>
+    <div class="about_fond_name">
+
+        <div class="fond_name">
+            <div class="fond">
+                <p>ФОНД</p>
+            </div>
+            <div class="nonc">
+                <p>НОНЦ</p>
+            </div>
         </div>
-        <table>
-            <tr *ngFor="let ch of childList">
-                <td>{{ch.id}}</td>
-                <td>{{ch.name}}</td>
-                <td>{{ch.patronym}}</td>
-                <td>{{ch.surname}}</td>
-                <td>{{ch.needSum}}</td>
-                <td>{{ch.donatSum}}</td>
-            </tr>
-        </table>
+
+        <div class="quote">
+            <p>Благодаря помощи неравнодушных людей нам удается <span class="imp">помочь людям</span>, оказавшимся в беде, <span class="imp">обрести надежду!</span> 
+                И мы будем продолжать это делать, пока у нас есть единомышленники,
+                 а их у нас с каждым днем все больше.
+            </p>
+        </div> 
+
     </div>
+
 </div>
