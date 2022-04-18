@@ -14,6 +14,7 @@ import { MainMenuComponent } from './menu-fond/main-menu/main-menu.component';
 import { FooterComponent } from './menu-fond/footer/footer.component';
 
 import { FondService } from './server/service/fond.service';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FondService } from './server/service/fond.service';
     HttpClientModule, //работа с сервером
     StatiсsPageModule, //статичные страницы сайта
     DynamicPageServModule, //динамические страницы сайта
-    AppRoutingModule, //маршуртизация
+    AppRoutingModule,  //маршуртизация
+    //StoreModule.forRoot({}, {}),
   ],
   providers: [FondService], //регистрация сервиса
   bootstrap: [AppComponent]
