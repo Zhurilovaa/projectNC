@@ -17,7 +17,7 @@ export class ChildrenComponent{
  
 
   ngOnInit(){    
-    this.children = this.fondServ.getData(); 
+    //this.children = this.fondServ.getData(); 
     //this.childTemp = this.fondServ.getChildL();
     this.childTemp = this.fondServ.getServData();
   }  

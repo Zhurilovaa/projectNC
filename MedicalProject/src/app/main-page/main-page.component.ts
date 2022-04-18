@@ -8,25 +8,25 @@ import { FondService } from '../server/service/fond.service';
   styleUrls: ['./main-page.component.less']
 })
 export class MainPageComponent{
-  childList: Child[] = [];
+  //childList: Child[] = [];
 
-  child: Child = {
+  /*child: Child = {
       id: 0,
       name: "***",
       patronym: "****",
       surname: "*****",
       needSum: 1,
       donatSum: 0,
-  };
+  };*/
 
   constructor(private fondService: FondService){}
-
+  /*
   addChild(newCh: Child){
     this.fondService.addData(newCh);
   }
 
   ngOnInit(){
     this.childList = this.fondService.getData();
-  }
+  }*/
 
 }

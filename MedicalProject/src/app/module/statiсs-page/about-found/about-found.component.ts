@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { Child } from 'src/app/server/childDate/child';
 import { FondService } from 'src/app/server/service/fond.service';
@@ -10,12 +12,22 @@ import { FondService } from 'src/app/server/service/fond.service';
 })
 export class AboutFoundComponent{
 
-  public content:string = 'aboutFond';
+  public content:string | undefined;
+  private contetnSubscription:  Subscription;
 
+  constructor(private fondService: FondService, private route: ActivatedRoute){
+
+    this.contetnSubscription = route.params.subscribe((params)=> this.content = params['content']);
+        
+  }
+
+  
+  /*
   changeContent(con:string){
     this.content = con;
   }
-  
+  */
+  /*
   childList: Child[] = [];
 
   child: Child = {
@@ -27,8 +39,6 @@ export class AboutFoundComponent{
       donatSum: 0,
   };
 
-  constructor(private fondService: FondService){}
-
   addChild(newCh: Child){
     this.fondService.addData(newCh);
   }
@@ -36,4 +46,5 @@ export class AboutFoundComponent{
   ngOnInit(){
     this.childList = this.fondService.getData();
   }
+  */
 }

@@ -11,7 +11,7 @@ import { Child } from "../childDate/child";
 export class FondService{
 
     private childUrl = 'http://localhost:3000/fond-server';
-    public children: Child[] = [
+    /*public children: Child[] = [
         {
             id: 1,
             name: "Ева",
@@ -52,7 +52,7 @@ export class FondService{
             needSum: 3153460,
             donatSum: 2223351,
         }
-    ];
+    ];*/
     
     public tempList: Child[] =[];
 
@@ -60,16 +60,17 @@ export class FondService{
 
     constructor(private http: HttpClient){
     }
-
+    /*
     getData(){
         //this.children = this.http.get(this.childUrl)
         return this.children;
     }
-    
+    */
+    /*
     addData(childAdd: Child){
         this.children.unshift(childAdd);
     }
-
+    */
 
     getServData(): Observable<Child[]>{
         this.http.get('http://localhost:3000/fond-server');

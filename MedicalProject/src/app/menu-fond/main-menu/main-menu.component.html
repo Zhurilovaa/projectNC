@@ -10,16 +10,16 @@
         <nav class="top-menu">
             <ul class="menu-main">
                 <li class="menu_point">
-                    <a class="menu_link" routerLink="/about" routerLinkActive="activePage">О фонде</a>
+                    <a class="menu_link" [routerLink]="['/about','aboutFond']" routerLinkActive="activePage">О фонде</a>
                     <ul class="submenu">
                         <li>
                             <div class="submenu_link">
-                                <a class="link" href='/'>О фонде</a>
+                                <a class="link" [routerLink]="['/about','aboutFond']">О фонде</a>
                             </div>
                         </li>
                         <li>
                             <div class="submenu_link">
-                                <a class="link"  href='/'>Наша команда</a>
+                                <a class="link"   [routerLink]="['/about','ourTeam']">Наша команда</a>
                             </div>
                         </li>
                         <li>

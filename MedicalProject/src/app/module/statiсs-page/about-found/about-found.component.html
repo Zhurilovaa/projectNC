@@ -97,32 +97,32 @@
             <ul class="submenu">
                 <li>
                     <div class="submenu_link">
-                        <a class="link" (click)="changeContent('aboutFond')">О фонде</a>
+                        <a class="link" [routerLink]="['/about','aboutFond']" >О фонде</a>
                     </div>
                 </li>
                 <li>
                     <div class="submenu_link">
-                        <a class="link" (click)="changeContent('ourTeam')">Наша команда</a>
+                        <a class="link" [routerLink]="['/about','ourTeam']" >Наша команда</a>
                     </div>
                 </li>
                 <li>
                     <div class="submenu_link">
-                        <a class="link" (click)="changeContent('expertCouncil')">Экспертный совет</a>
+                        <a class="link">Экспертный совет</a>
                     </div>
                 </li>
                 <li>
                     <div class="submenu_link">
-                        <a class="link" (click)="changeContent('structFond')">Организациооная структура фонда</a>
+                        <a class="link" >Организациооная структура фонда</a>
                     </div>
                 </li>
                 <li>
                     <div class="submenu_link">
-                        <a class="link" (click)="changeContent('frequentQuestions')">Самые частые вопросы</a>
+                        <a class="link">Самые частые вопросы</a>
                     </div>
                 </li>
                 <li>
                     <div class="submenu_link">
-                        <a class="link" (click)="changeContent('thanks')">Благодарности</a>
+                        <a class="link">Благодарности</a>
                     </div>
                 </li>
             </ul>
@@ -130,3 +130,8 @@
     </div>
 
 </div>
+
+<!-- (click)="changeContent('expertCouncil')" 
+(click)="changeContent('structFond')"
+(click)="changeContent('frequentQuestions')"
+(click)="changeContent('thanks')"-->

@@ -6,7 +6,7 @@
         <p>about-found works!</p>
     
         <div class="panel">
-            <table>
+            <!-- <table>
                 <tr *ngFor="let ch of children">
                     <td>{{ch.id}}</td>
                     <td>{{ch.name}}</td>
@@ -15,7 +15,7 @@
                     <td>{{ch.needSum}}</td>
                     <td>{{ch.donatSum}}</td>
                 </tr>
-            </table>
+            </table> -->
             <table>
                 <tr *ngFor="let ch of childTemp|async">
                     <td>{{ch.id}}</td>

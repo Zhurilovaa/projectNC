@@ -9,6 +9,7 @@ import { ProjectFondComponent } from './project-fond/project-fond.component';
 import { NewsFondComponent } from './news-fond/news-fond.component';
 import { ContactsFondComponent } from './contacts-fond/contacts-fond.component';
 import { PartnersFondComponent } from './partners-fond/partners-fond.component';
+import { AppRoutingModule } from 'src/app/app-routing/app-routing.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PartnersFondComponent } from './partners-fond/partners-fond.component';
   ],
   imports: [
     CommonModule,
-    FormsModule 
+    FormsModule,
+    AppRoutingModule, //маршуртизация 
   ],
   exports:[
     AboutFoundComponent,

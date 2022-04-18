@@ -16,7 +16,7 @@ import { ReportsFondComponent } from '../module/statiсs-page/reports-fond/repor
 
 const routes: Routes = [
   {
-    path: 'about',
+    path: 'about/:content',
     component: AboutFoundComponent,
   },
   {
