@@ -16,6 +16,7 @@ import { FooterComponent } from './menu-fond/footer/footer.component';
 import { FondService } from './server/service/fond.service';
 import { StoreModule } from '@ngrx/store';
 
+
 @NgModule({
   declarations: [
     AppComponent,

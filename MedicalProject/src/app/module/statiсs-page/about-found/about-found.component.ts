@@ -1,50 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-
-import { Child } from 'src/app/server/childDate/child';
+import { map, Observable, of} from 'rxjs';
 import { FondService } from 'src/app/server/service/fond.service';
 
 @Component({
   selector: 'stat-about-found',
   templateUrl: './about-found.component.html',
-  styleUrls: ['./about-found.component.less']
+  styleUrls: ['./about-found.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AboutFoundComponent{
+export class AboutFoundComponent implements OnInit{
 
-  public content:string | undefined;
-  private contetnSubscription:  Subscription;
+  public content: Observable<string>  = of("");
 
-  constructor(private fondService: FondService, private route: ActivatedRoute){
+  //private contetnSubscription:  Subscription;
 
-    this.contetnSubscription = route.params.subscribe((params)=> this.content = params['content']);
-        
-  }
+  constructor(private fondService: FondService, private route: ActivatedRoute, private ref: ChangeDetectorRef){
+  }  
 
-  
-  /*
-  changeContent(con:string){
-    this.content = con;
-  }
-  */
-  /*
-  childList: Child[] = [];
+  ngOnInit(): void{
+    
+    //this.contetnSubscription = this.route.params.subscribe((params)=> this.content = params['content']);
+    this.content = this.route.params.pipe(map( (params) => params['content']));
+    console.log(this.content + 'конструктор');   
 
-  child: Child = {
-      id: 0,
-      name: "***",
-      patronym: "****",
-      surname: "*****",
-      needSum: 1,
-      donatSum: 0,
-  };
-
-  addChild(newCh: Child){
-    this.fondService.addData(newCh);
-  }
-
-  ngOnInit(){
-    this.childList = this.fondService.getData();
-  }
-  */
+  } 
 }

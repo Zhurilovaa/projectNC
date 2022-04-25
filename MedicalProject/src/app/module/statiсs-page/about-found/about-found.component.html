@@ -23,7 +23,7 @@
     <div class="infoFond">
         <div class="infoFond_content">
             <!-- Позже контент разнесу по разным компонентам -->
-            <div class="visibleContent"  *ngIf="content === 'aboutFond'">
+            <div class="visibleContent"  *ngIf="(content|async) === 'aboutFond'">
                 <div class="title">
                     <p class="titleF">О ФОНДЕ</p>
                 </div>
@@ -83,7 +83,7 @@
                     </p>
                 </div>
             </div> 
-            <div class="visibleContent"  *ngIf="content === 'ourTeam'">
+            <div class="visibleContent"  *ngIf="(content|async)==='ourTeam'">
                 <div class="title">
                     <p class="titleF">НАША КОМАНДА</p>
                 </div>

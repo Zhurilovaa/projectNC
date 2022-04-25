@@ -14,10 +14,14 @@ import { ProjectFondComponent } from '../module/statiсs-page/project-fond/proje
 import { ReportsFondComponent } from '../module/statiсs-page/reports-fond/reports-fond.component';
 
 
-const routes: Routes = [
+const routes: Routes = [  
   {
     path: 'about/:content',
     component: AboutFoundComponent,
+  },
+  {
+    path: 'about',
+    redirectTo: '/about/aboutFond',
   },
   {
     path: 'news',
