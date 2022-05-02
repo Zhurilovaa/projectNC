@@ -1,0 +1,86 @@
+@import "/src/styles.less";
+@import url('https://fonts.googleapis.com/css?family=Arimo'); 
+
+.childMain{
+    //border: 1px solid @color_green;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+
+    .imgChild{        
+        .img{
+            width:80%; 
+            margin: 0 auto;           
+        }
+        box-shadow: 0 0 0 1px #ccc,
+                        0 -2px 15px -5px @color_green,
+                        2px 0 15px -5px @color_green,
+                        0 2px 15px -5px @color_green,
+                        -2px 0 15px -5px @color_green;
+        &:hover{
+            box-shadow: 0 0 0 1px #ccc,
+                        0 -2px 15px -5px @color_lavender,
+                        2px 0 15px -5px @color_lavender,
+                        0 2px 15px -5px @color_lavender,
+                        -2px 0 15px -5px @color_lavender;
+
+        }
+    }
+    .nameChild{
+        margin: 2%;
+        .nameP{
+            color: @color_text_grey;
+            font-size: 1em;
+            letter-spacing: 2px;
+            font-family: 'Arimo', sans-serif;
+            font-weight: bold;
+        }        
+    }
+    .moneyChild{
+        margin: 2%;
+        .infoDonate{
+            color: @color_text_grey;
+            font-size: 1em;
+            letter-spacing: 1px;
+            font-family: 'Arimo', sans-serif;
+            font-weight: bold;
+            .mainTd{
+                font-size: 0.95em;
+            }
+            .moneyTrue{
+                color: @color_text_green;
+            }
+            .moneyFalse{
+                color: @color_orange;
+            }
+        }
+    }
+    .helpChild{
+        width: 40%;
+        align-self: flex-start;
+
+        .helpBtn{
+            background: @color_orange;
+            border-radius: 10px;
+            color: @color_white;
+
+            padding: 4%;
+                    
+            font-size: 1em;
+            font-family: 'Arimo', sans-serif;
+            font-weight: bold;
+            width: 100%;
+            height:100%;
+            transition: .3s linear;
+
+            box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .2);
+            &:hover{
+                background: rgba(0,0,0,.3);
+                color:@color_white;
+            }
+        }
+    }
+}

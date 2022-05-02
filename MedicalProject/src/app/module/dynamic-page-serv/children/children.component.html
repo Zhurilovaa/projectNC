@@ -1,12 +1,10 @@
 
 <div class="main">
-    <p>children works!</p>
 
     <div class="main">
-        <p>about-found works!</p>
     
         <div class="panel">
-            <table>
+            <!-- <table> 
                 <tr *ngFor="let ch of children|async">
                     <td>{{ch.id}}</td>
                     <td>{{ch.name}}</td>
@@ -16,9 +14,14 @@
                     <td>{{ch.donatSum}}</td>
                 </tr>
             </table>
-            <input [(ngModel)]="idC">
-            <input [(ngModel)]="donateC">
-            <button (click)="donate()">Donate</button>
+        -->
+            <div *ngFor="let ch of children|async" class="childPanel">
+                <dynamic-child [childCurr]="ch"></dynamic-child> 
+            </div>
         </div>
+        
+        <input [(ngModel)]="idC" style="border: 1px solid black">
+        <input [(ngModel)]="donateC" style="border: 1px solid black">
+        <button (click)="donate()" style="border: 1px solid black">Donate</button>
     </div>
 </div>

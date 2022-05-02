@@ -1,3 +1,6 @@
+@import "/src/styles.less";
+@import url('https://fonts.googleapis.com/css?family=Arimo'); 
+
 .main{
     display: flex;
     flex-direction: column;
@@ -10,4 +13,21 @@ p{
 .panel{
     margin: 0 auto;
     padding: 50px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: space-around;
+
+    .childPanel{
+        border: 1px solid @color_green;
+        margin: 1%;
+        padding:1%;
+
+        align-self: stretch;
+        width:20%;
+        height:20%;
+    }
 }
