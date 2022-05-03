@@ -1,10 +1,11 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import { Child } from 'src/app/server/childDate/child';
 
 @Component({
   selector: 'dynamic-child',
   templateUrl: './child.component.html',
-  styleUrls: ['./child.component.less']
+  styleUrls: ['./child.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChildComponent implements OnInit{
 
