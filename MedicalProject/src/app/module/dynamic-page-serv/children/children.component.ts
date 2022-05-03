@@ -1,7 +1,11 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Observable, of, Subject, Subscriber, Subscription, switchMap, take } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { Observable, of, Subject, Subscription, switchMap, take } from 'rxjs';
 import { Child } from 'src/app/server/childDate/child';
 import { FondService } from 'src/app/server/service/fond.service';
+import { GetHelp } from 'src/app/store/actions/fond.actions';
+import { selectChildrenList } from 'src/app/store/selectors/fond.selectors';
+import { fondState } from 'src/app/store/state/fond.state';
 
 @Component({
   selector: 'dynamic-children',
@@ -20,8 +24,25 @@ export class ChildrenComponent implements OnInit, AfterViewInit{
 
   private putS: Subscription | undefined;
 
-  constructor(private fondServ: FondService, private ref: ChangeDetectorRef) { 
+  constructor(private fondServ: FondService, private ref: ChangeDetectorRef, private store: Store) { 
+
+    this.store
+      //.pipe(select(selectChildrenList))
+      .subscribe((state)=>console.log(state));
+
+    /*this.store.dispatch(
+      new GetHelp(
+        {
+          childUpdate: {
+            idChild: this.idC,
+            donateSum: this.donateC,
+          }
+        }
+      )
+    );*/
+
   }
+
 
   ngOnInit(): void {
     //this.getData();
