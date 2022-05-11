@@ -3,7 +3,7 @@ import { of, switchMap } from "rxjs";
 import { FondActions, GetChildren } from "../actions/fond.actions";
 import { FondService } from "src/app/server/service/fond.service";
 import { Child } from "src/app/server/childDate/child";
-import { Effect } from 
+import { Effect } from "@ngrx/effects"; 
 /*
 @Injectable()
 export class FondEffects {
@@ -15,5 +15,5 @@ export class FondEffects {
     );
 
     constructor(private fServ: FondService, private actions$: Actions){}
-}*/
-
+}
+*/
