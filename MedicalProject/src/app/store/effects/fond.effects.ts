@@ -1,19 +1,26 @@
 import { Injectable } from "@angular/core";
-import { of, switchMap } from "rxjs";
-import { FondActions, GetChildren } from "../actions/fond.actions";
-import { FondService } from "src/app/server/service/fond.service";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { catchError, EMPTY, map, switchMap } from "rxjs";
 import { Child } from "src/app/server/childDate/child";
-import { Effect } from "@ngrx/effects"; 
-/*
-@Injectable()
-export class FondEffects {
-    
-    @Effect()
-    getChildren$ = this.actions$.pipe(
-        ofType<GetChildren>(FondActions.GetChildren),
-        switchMap(()=>this.fServ.getAllChildren()),
-    );
+import { FondService } from "src/app/server/service/fond.service";
+import { FondActions, SuccessLoadChildList } from "../actions/fond.actions";
 
-    constructor(private fServ: FondService, private actions$: Actions){}
+//export const LoadChildren = 
+@Injectable()
+export class ChildrenEffects {
+    
+  loadList$ = createEffect(() =>
+  this.actions$.pipe(
+      ofType(FondActions.LoadChildList),
+      switchMap(()=>this.fondServ.getAllChildren()),
+      map((response: Child[])=> {
+          return SuccessLoadChildList({children: response});
+      }),
+      catchError(() => EMPTY)
+  ));
+
+constructor(
+    private actions$: Actions,
+    private fondServ: FondService
+  ) {}
 }
-*/

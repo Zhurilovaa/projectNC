@@ -15,7 +15,7 @@ import { FooterComponent } from './menu-fond/footer/footer.component';
 
 import { FondService } from './server/service/fond.service';
 import { StoreModule } from '@ngrx/store';
-import { fondReducer } from './store/reducers/fond.reducer';
+import { reducer } from './store/reducers/fond.reducer';
 
 
 @NgModule({
@@ -32,7 +32,7 @@ import { fondReducer } from './store/reducers/fond.reducer';
     StatiсsPageModule, //статичные страницы сайта
     DynamicPageServModule, //динамические страницы сайта
     AppRoutingModule,  //маршуртизация
-    StoreModule.forRoot(fondReducer),
+    StoreModule.forRoot(reducer),
   ],
   providers: [FondService], //регистрация сервиса
   bootstrap: [AppComponent]

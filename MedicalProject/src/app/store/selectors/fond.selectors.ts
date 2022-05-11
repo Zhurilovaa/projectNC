@@ -1,9 +1,9 @@
 import { createSelector } from "@ngrx/store";
-import { fondState } from "../state/fond.state";
+import { AppState, childState } from "../state/fond.state";
 
-const selectChildren = (state: fondState) => state;
+export const getChildList = (state: AppState) => state.childrenFond;
 
-export const selectChildrenList = createSelector(
-  selectChildren,
-  (state: fondState) => state.children,
-);
+export const childListSelector = createSelector(
+  getChildList,
+  (state:childState)=>state.children
+)
