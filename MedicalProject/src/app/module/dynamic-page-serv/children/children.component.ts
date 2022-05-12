@@ -5,10 +5,6 @@ import { Child } from 'src/app/server/childDate/child';
 
 import { FondService } from 'src/app/server/service/fond.service';
 
-import { select, Store } from '@ngrx/store';
-import { LoadChildList } from 'src/app/store/actions/fond.actions';
-import { AppState } from 'src/app/store/state/fond.state';
-import { childListSelector } from 'src/app/store/selectors/fond.selectors';
 
 @Component({
   selector: 'dynamic-children',
@@ -27,39 +23,11 @@ export class ChildrenComponent implements OnInit, AfterViewInit{
 
   private putS: Subscription | undefined;
 
-  constructor(private fondServ: FondService, private ref: ChangeDetectorRef, private childStore: Store<AppState>){
-    
-    
-
-  }
-  /*constructor( private store: Store) { 
-
-
-   /* this.store
-      //.pipe(select(selectChildrenList))
-      .subscribe((state)=>console.log(state));
-*/
-    /*this.store.dispatch(
-      new GetHelp(
-        {
-          childUpdate: {
-            idChild: this.idC,
-            donateSum: this.donateC,
-          }
-        }
-      )
-    );
-
-  }*/
+  constructor(private fondServ: FondService, private ref: ChangeDetectorRef){}
 
 
   ngOnInit(): void {
-    //this.getData();
-
-    //this.children = this.childrenSubject.pipe(switchMap(()=>this.fondServ.getAllChildren()))
-    this.childStore.dispatch(LoadChildList());
-    this.children = this.childStore.pipe(select(childListSelector));
-
+    this.children = this.childrenSubject.pipe(switchMap(()=>this.fondServ.getAllChildren()))
   }
 
   ngAfterViewInit(){
@@ -68,8 +36,6 @@ export class ChildrenComponent implements OnInit, AfterViewInit{
 
   getData(){  
     this.childrenSubject.next();
-    //this.children = this.fondServ.getAllChildren(); 
-    //this.ref.markForCheck();
   }  
 
   donate(){
