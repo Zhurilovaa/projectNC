@@ -5,6 +5,7 @@ import { AppComponent } from '../app.component';
 import { MainPageComponent } from '../main-page/main-page.component';
 
 import { ChildrenComponent } from '../module/dynamic-page-serv/children/children.component';
+import { DonateHelpFormComponent } from '../module/dynamic-page-serv/donate-help-form/donate-help-form.component';
 import { AboutFoundComponent } from '../module/statiсs-page/about-found/about-found.component';
 import { ContactsFondComponent } from '../module/statiсs-page/contacts-fond/contacts-fond.component';
 import { GetHelpFondComponent } from '../module/statiсs-page/get-help-fond/get-help-fond.component';
@@ -51,12 +52,14 @@ const routes: Routes = [
     path: 'contacts',
     component: ContactsFondComponent,
   },
-  /*
   {
-    path: 'donate',
-    component: DonateFondComponent,
+    path: 'donateHelp/:id',
+    component: DonateHelpFormComponent,
   },
-  */
+  {
+    path: 'donateHelp',
+    redirectTo: '/donateHelp/0',
+  },
   { 
     path: '**', 
     component: MainPageComponent,

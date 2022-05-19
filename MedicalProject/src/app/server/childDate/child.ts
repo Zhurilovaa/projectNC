@@ -20,14 +20,14 @@ export class Child{
 }
 
 //для запроса PUT
-export class UpdateChildInfoDTO{
+export class UpdateChild{
     //здесь нужно обозначить какие поля мы ожидаем в этом объекте
     //учитывая, что мы их не меняем, делаем сразу с модификатором readonly
-    idChild: number;
+    //idChild: number;
     donateSum: number;
 
-    constructor (id:number = -1, don:number = 0){
-        this.idChild = id;
+    constructor (/*id:number = -1,*/ don:number = 0){
+        //this.idChild = id;
         this.donateSum = don;
     }
 }
