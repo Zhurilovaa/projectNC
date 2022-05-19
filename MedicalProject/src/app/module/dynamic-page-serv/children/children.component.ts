@@ -42,9 +42,9 @@ export class ChildrenComponent implements OnInit, AfterViewInit{
     if(this.putS){
       this.putS.unsubscribe();
     }
-    this.putS = this.fondServ.putChild(+(this.idC), +(this.donateC)).pipe(take(1)).subscribe(()=>{
+    /*this.putS = this.fondServ.putChild(+(this.idC), +(this.donateC)).pipe(take(1)).subscribe(()=>{
       this.getData();
-    });  
+    });*/  
 
   }
 }

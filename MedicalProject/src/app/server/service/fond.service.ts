@@ -1,33 +1,47 @@
 import { HttpClient } from "@angular/common/http";
+
 import { Injectable } from "@angular/core";
+
+import { Store } from "@ngrx/store";
+
 import { Observable } from "rxjs";
+
+import { AppState } from "src/app/store/state/app.state";
+import { SetAllChildrenAction } from "src/app/store/actions/fond.actions";
+import { selectChildren } from "src/app/store/selectors/fond.selectors";
+
+import { environment } from "src/environments/environment";
+
 import { Child, UpdateChild } from "../childDate/child";
 
-//В сервисе определен массив данных и методы работы с ним
-//Позже-данные с сервера
-//Пока методы стандартные
 @Injectable()
 export class FondService{
 
-    private childUrl = 'http://localhost:3000/fond-server';
+    private childUrl = environment.childFondUrl;
 
-    constructor(private http: HttpClient){
+    public childList: Child[] = [];
+
+    constructor(private http: HttpClient, private store: Store<AppState>){
     }
 
     //получение списка детей с сервера
-    getAllChildren(): Observable<Child[]>{
-        console.log("get запрос выполнен!");
-        //get запрос
-        return this.http.get<Child[]>(this.childUrl);        
+    getAllChildren():Observable<Child[]> {
+        this.http.get<Child[]>(this.childUrl).subscribe( (childList) => {
+            this.childList = childList;
+            return this.store.dispatch(new SetAllChildrenAction(childList));
+        });
+        return this.store.select(selectChildren);
     }
     
     //внесение пожертвований
-    putChild(id: number, donate: number): Observable<Child>{
+    donateChildById(id: number, donateCh: UpdateChild): number {
+        const body: UpdateChild = {
+            "donateSum": donateCh.donateSum,
+        };
 
-        let updChild = new UpdateChild(donate);
-        console.log(updChild);
-        
-        return this.http.put<Child>(this.childUrl, updChild);       
+        this.http.put<Child[]>(`${this.childUrl}/${id.toString()}`, body).subscribe( (children) => {
+            this.store.dispatch(new SetAllChildrenAction(children));
+        });
+        return 1;
     }
-
 }
