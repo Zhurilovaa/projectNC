@@ -28,12 +28,4 @@ export class ChildComponent implements OnInit{
       this.status = true;
     }
   }
-
-  changeURL(): void{
-    this.router.navigate(['donateHelp', this.idChild], {
-      //queryParams: { id: this.idChild },
-      //fragment: 'address',
-    });
-  }
-
 }

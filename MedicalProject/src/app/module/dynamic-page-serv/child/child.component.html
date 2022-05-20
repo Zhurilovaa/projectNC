@@ -21,6 +21,6 @@
         </table>
     </div>
     <div class="helpChild">
-        <button class="helpBtn" (click)="changeURL()">Помочь</button>
+        <button class="helpBtn"  [routerLink]="['/donateHelp', childCurr.id]">Помочь прямо сейчас</button>
     </div>
 </div>

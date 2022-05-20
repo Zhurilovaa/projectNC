@@ -1,0 +1,20 @@
+<p>form-donate works!</p>
+<!-- Реактивная форма добавления студента -->
+<form novalidate [formGroup]="formChild" (ngSubmit)="sentDonate()">
+    <div>
+        Добавить студента:
+    </div>      
+
+    <label>
+        <div class="label__text">
+        Средний бал:
+        </div>
+        <input type="number" formControlName="donate">
+    </label>
+
+    <p *ngIf="formChild.get('mark')?.dirty && formChild.get('mark')?.invalid "
+        class="error">Диапозон 0.0 - 5.0
+    </p>
+
+    <button  [ngClass]="{'disabled':formChild.invalid}" type="submit">Ввод</button>
+</form>

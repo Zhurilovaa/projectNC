@@ -4,15 +4,26 @@ export class Child{
     name: string;
     patronym: string;
     surname: string;
+    birthDate: string;
     gender: string;
     needSum: number;
     donatSum: number;
 
-    constructor(idC:string = "", nameC: string = "", patronymC: string="",surnameC: string="", genderC: string="", needSumC: number=0,donatSumC: number=0){
+    constructor(
+        idC:string = "",
+        nameC: string = "",
+        patronymC: string="",
+        surnameC: string="",
+        birthDateC: string="",
+        genderC: string="",
+        needSumC: number=0,
+        donatSumC: number=0){
+
         this.id = +(idC);
         this.name = nameC;
         this.patronym = patronymC;
         this.surname = surnameC;
+        this.birthDate = birthDateC;
         this.gender = genderC;
         this.needSum = needSumC;
         this.donatSum = donatSumC;

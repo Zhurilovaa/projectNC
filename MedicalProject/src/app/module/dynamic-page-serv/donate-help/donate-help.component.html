@@ -1,0 +1,70 @@
+<!-- <p>donate-help works!</p> -->
+<div class="main">
+
+    <div class="linkDonate">
+        
+        <div class="getHelpPhrase">
+            <p class="Phrase">
+                Вы можете внести пожертвование прямо сейчас!
+            </p>
+        </div>
+
+        <div class="buttonForHelp">
+            <button class="help_button" (click)="setOpenPopUpChoice()" >Помочь</button>
+        </div>
+
+    </div>
+</div>
+
+<div class="popup_bg" *ngIf="( getPopUpChoise()=== true)">
+    <div class="popup">
+        <div class="exit">
+            <button class="btn_close" (click)="setExitPopUpChoise()">x</button>
+        </div>
+        <div class="setParam">        
+            <label class="findParam">
+                <input placeholder="Фамилия" type="text" class="inputParam" [(ngModel)]="SNP[0]">
+            </label>
+                
+            <label  class="findParam">
+                <input placeholder="Имя" type="text"  class="inputParam" [(ngModel)]="SNP[1]">
+            </label>
+                
+            <label  class="findParam">
+                <input placeholder="Отчество" type="text"  class="inputParam" [(ngModel)]="SNP[2]">
+            </label>
+        </div>
+        <div class="childList">
+            <div *ngFor="let ch of childList$ |async" class="childListTR" [routerLink]="['/donateHelp',ch.id]">
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.surname}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.name}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.patronym}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.birthDate | date :'dd/MM/yyyy' }} </div>
+            </div>  
+            <div *ngFor="let ch of childList$ |async" class="childListTR" [routerLink]="['/donateHelp',ch.id]">
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.surname}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.name}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.patronym}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.birthDate | date :'dd/MM/yyyy' }} </div>
+            </div>  
+            <div *ngFor="let ch of childList$ |async" class="childListTR" [routerLink]="['/donateHelp',ch.id]">
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.surname}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.name}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.patronym}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.birthDate | date :'dd/MM/yyyy' }} </div>
+            </div>  
+            <div *ngFor="let ch of childList$ |async" class="childListTR" [routerLink]="['/donateHelp',ch.id]">
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.surname}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.name}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.patronym}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.birthDate | date :'dd/MM/yyyy' }} </div>
+            </div>  
+            <div *ngFor="let ch of childList$ |async" class="childListTR" [routerLink]="['/donateHelp',ch.id]">
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.surname}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.name}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.patronym}} </div>
+                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.birthDate | date :'dd/MM/yyyy' }} </div>
+            </div>     
+        </div>
+    </div>
+</div>
