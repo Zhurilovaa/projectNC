@@ -25,7 +25,7 @@ export class FondService{
     }
 
     //получение списка детей с сервера
-    getAllChildren():Observable<Child[]> {
+    getAllChildren():Observable<Child[]>{
         this.http.get<Child[]>(this.childUrl).subscribe( (childList) => {
             this.childList = childList;
             return this.store.dispatch(new SetAllChildrenAction(childList));

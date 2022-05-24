@@ -8,6 +8,7 @@ export class Child{
     gender: string;
     needSum: number;
     donatSum: number;
+    history: string;
 
     constructor(
         idC:string = "",
@@ -17,7 +18,8 @@ export class Child{
         birthDateC: string="",
         genderC: string="",
         needSumC: number=0,
-        donatSumC: number=0){
+        donatSumC: number=0,
+        historyC: string=""){
 
         this.id = +(idC);
         this.name = nameC;
@@ -27,6 +29,7 @@ export class Child{
         this.gender = genderC;
         this.needSum = needSumC;
         this.donatSum = donatSumC;
+        this.history = historyC;
     }
 }
 

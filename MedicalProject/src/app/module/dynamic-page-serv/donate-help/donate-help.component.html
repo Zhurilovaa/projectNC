@@ -34,37 +34,34 @@
                 <input placeholder="Отчество" type="text"  class="inputParam" [(ngModel)]="SNP[2]">
             </label>
         </div>
-        <div class="childList">
-            <div *ngFor="let ch of childList$ |async" class="childListTR" [routerLink]="['/donateHelp',ch.id]">
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.surname}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.name}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.patronym}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.birthDate | date :'dd/MM/yyyy' }} </div>
-            </div>  
-            <div *ngFor="let ch of childList$ |async" class="childListTR" [routerLink]="['/donateHelp',ch.id]">
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.surname}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.name}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.patronym}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.birthDate | date :'dd/MM/yyyy' }} </div>
-            </div>  
-            <div *ngFor="let ch of childList$ |async" class="childListTR" [routerLink]="['/donateHelp',ch.id]">
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.surname}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.name}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.patronym}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.birthDate | date :'dd/MM/yyyy' }} </div>
-            </div>  
-            <div *ngFor="let ch of childList$ |async" class="childListTR" [routerLink]="['/donateHelp',ch.id]">
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.surname}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.name}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.patronym}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.birthDate | date :'dd/MM/yyyy' }} </div>
-            </div>  
-            <div *ngFor="let ch of childList$ |async" class="childListTR" [routerLink]="['/donateHelp',ch.id]">
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.surname}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.name}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.patronym}} </div>
-                <div *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd"> {{ch.birthDate | date :'dd/MM/yyyy' }} </div>
-            </div>     
+        <div class="childList">            
+            <table>
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Дата рождения</th>
+                    <th>Сколько нехватает до <b>спасения!</b></th>
+                    <th>...</th>
+                </tr>
+                <tr *ngFor="let ch of childList$ |async">
+                    <td *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd" [routerLink]="['/donateHelp',ch.id]" > {{ch.surname}} </td>
+                    <td *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd" [routerLink]="['/donateHelp',ch.id]" > {{ch.name}} </td>
+                    <td *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd" [routerLink]="['/donateHelp',ch.id]" > {{ch.patronym}} </td>
+                    <td *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd" [routerLink]="['/donateHelp',ch.id]" > {{ch.birthDate | date :'dd/MM/yyyy' }} </td>  
+                    <td *ngIf="(ch.needSum-ch.donatSum)>0" [routerLink]="['/donateHelp',ch.id]"> {{ch.needSum-ch.donatSum}} руб.</td>   
+                    <td *ngIf="(ch.needSum-ch.donatSum)<=0" [routerLink]="['/donateHelp',ch.id]"> Необходимая сумма уже собрана!</td> 
+                    <td (click)="setOpenPopUpHistory(ch.id)"> <p class="history">узнать историю...</p> </td>      
+                </tr>
+            </table>  
+        </div>
+    </div>
+</div>
+
+<div class="popup_bg" *ngIf="( getPopUpHistory()=== true)">
+    <div class="popup historyPopUp">
+        <div class="exit">
+            <button class="btn_close" (click)="setExitPopUpHistory()">x</button>
         </div>
     </div>
 </div>

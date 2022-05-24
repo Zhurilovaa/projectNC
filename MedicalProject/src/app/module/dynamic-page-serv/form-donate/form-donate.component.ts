@@ -32,13 +32,13 @@ export class FormDonateComponent implements OnInit {
   donateRangeValidator(control: AbstractControl): ValidationErrors | null {
     const inputDonate = +(control.value);
     const minDonate: number = 0.1;
-    const maxDonate: number = 10000.0;
-    if (inputDonate > maxDonate) {
+    //const maxDonate: number = 10000.0;
+    /*if (inputDonate > maxDonate) {
         return {
             "requiredMark<": maxDonate,
             "inputMark: ": inputDonate
         };
-    }
+    }*/
     if (inputDonate < minDonate) {
         return {
             "requiredMark>": minDonate,

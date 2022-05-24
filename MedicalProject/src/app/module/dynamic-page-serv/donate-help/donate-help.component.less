@@ -3,6 +3,7 @@
 
 @color_glowing_btn: #ec882a;
 @color_input_hover: #f0c8a2;
+@color_history: #8a8787;;
 
 .text(){
     font-family: 'Arimo', sans-serif;     
@@ -138,6 +139,7 @@
 
             .btn_close {
                 cursor: pointer;
+                width: 3%;
                 border: 0px;
                 background-color: @color_grey;
                 text-transform: uppercase;
@@ -208,7 +210,41 @@
                     cursor:pointer;
                 }
             }
-        }           
+
+            table{
+                width: 100%;
+                //border: 1px solid black;
+                border-collapse: collapse;
+                
+                tr{ 
+                    th{
+                        //border: 1px solid black;
+                        background: @color_white;
+                        color: @color_glowing_btn;
+                        padding: 10px 2px;
+                        text-align: left;                        
+                    } 
+                    &:hover{
+                        background-color: @color_input_hover;
+                        cursor:pointer;
+                    }                  
+                    td{
+                        .text;
+                        padding: 10px 2px;
+                        text-align: left;
+                        border: 0px;
+                        
+                    }
+                }
+            }
+            .history{
+                text-decoration: underline @color_grey ;
+                color: @color_history;
+            }
+        }  
+        .historyPopUp{
+
+        }         
                  
     }    
 }
