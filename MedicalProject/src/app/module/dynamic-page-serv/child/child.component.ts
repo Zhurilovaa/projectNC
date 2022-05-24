@@ -19,6 +19,7 @@ export class ChildComponent implements OnInit{
   public urlView: string = "";
   public childrenView: boolean = false;
   public donateView: boolean = false;
+  public donateFormView: boolean = false;
 
   //public temp: number[] = []
 
@@ -38,6 +39,7 @@ export class ChildComponent implements OnInit{
     this.urlView = this.router.url;
     this.childrenView = this.urlView.includes("children");
     this.donateView = this.urlView.includes("donateHelp");
+    this.donateFormView = this.urlView.includes("donateHelp/");
 
     /*for(let i=0;i<100;i++){
       this.temp.push(i);

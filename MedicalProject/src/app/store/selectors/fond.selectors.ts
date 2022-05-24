@@ -10,3 +10,8 @@ export const selectChildren = createSelector(
     selectChildState,
     (state:FondState)=> state.childList
 );
+
+export const selectChildID = createSelector(
+    selectChildState,
+    (state: FondState) => state.childId
+);

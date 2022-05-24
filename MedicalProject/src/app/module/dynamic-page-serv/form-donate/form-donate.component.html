@@ -1,20 +1,26 @@
-<!-- <dynamic-child [childCurr]=""></dynamic-child> -->
-<!-- Реактивная форма внесения пожертвований-->
-<form novalidate [formGroup]="formChild" (ngSubmit)="sentDonate()">
-    <div>
-        Внести пожертвование:
-    </div>      
+<div class="main">
+    <!-- Реактивная форма внесения пожертвований-->
+    <div class="form">
+        <form novalidate [formGroup]="formChild" (ngSubmit)="sentDonate()">
+            <div>
+                Внести пожертвование:
+            </div>      
 
-    <label>
-        <div class="label__text">
-        Средний бал:
-        </div>
-        <input type="number" formControlName="donate">
-    </label>
+            <label>
+                <div class="label__text">
+                Средний бал:
+                </div>
+                <input type="number" formControlName="donate">
+            </label>
 
-    <p *ngIf="formChild.get('mark')?.dirty && formChild.get('mark')?.invalid "
-        class="error">Диапозон 0.0 - 5.0
-    </p>
+            <p *ngIf="formChild.get('donate')?.dirty && formChild.get('donate')?.invalid "
+                class="error">Диапозон 0.0 - 5.0
+            </p>
 
-    <button  [ngClass]="{'disabled':formChild.invalid}" type="submit">Ввод</button>
-</form>
+            <button  [ngClass]="{disabled: formChild.invalid}" type="submit">Ввод</button>
+        </form>
+    </div>
+    <div class="childInfo" *ngFor="let ch of childId$|async">
+        <dynamic-child [childCurr]="ch"></dynamic-child>
+    </div>
+</div>

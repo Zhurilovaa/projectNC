@@ -7,8 +7,8 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
 import { AppState } from "src/app/store/state/app.state";
-import { SetAllChildrenAction } from "src/app/store/actions/fond.actions";
-import { selectChildren } from "src/app/store/selectors/fond.selectors";
+import { SetAllChildrenAction, SetChildIdAction } from "src/app/store/actions/fond.actions";
+import { selectChildren, selectChildID } from "src/app/store/selectors/fond.selectors";
 
 import { environment } from "src/environments/environment";
 
@@ -20,6 +20,7 @@ export class FondService{
     private childUrl = environment.childFondUrl;
 
     public childList: Child[] = [];
+    public childId: Child[] = [];
 
     constructor(private http: HttpClient, private store: Store<AppState>){
     }
@@ -32,6 +33,14 @@ export class FondService{
         });
         return this.store.select(selectChildren);
     }
+
+    getChildID(id:number):Observable<Child[]>{
+        this.http.get<Child[]>(`${this.childUrl}/${id.toString()}`).subscribe( (childId) =>{
+            this.childId = childId;
+            return this.store.dispatch(new SetChildIdAction(childId));
+        });
+        return this.store.select(selectChildID);
+    }
     
     //внесение пожертвований
     donateChildById(id: number, donateCh: UpdateChild): number {
@@ -41,6 +50,8 @@ export class FondService{
 
         this.http.put<Child[]>(`${this.childUrl}/${id.toString()}`, body).subscribe( (children) => {
             this.store.dispatch(new SetAllChildrenAction(children));
+            let childId = children.findIndex((value)=>value.id=== +id);
+            this.store.dispatch(new SetChildIdAction(children.slice(childId, childId+1)));
         });
         return 1;
     }

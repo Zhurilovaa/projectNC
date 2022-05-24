@@ -4,10 +4,12 @@ import { createEntityAdapter } from "@ngrx/entity"
 
 export interface FondState{
     childList: Child[];
+    childId: Child[];
 }
 
 export const initialFondState: FondState = {
-    childList: []
+    childList: [],
+    childId: [],
 };
 
 export const fondAdapter = createEntityAdapter<Child>({    

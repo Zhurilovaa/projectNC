@@ -1,6 +1,6 @@
 
 <div class="mainView">
-    <div [ngClass]="{childMain:true, childViewW: childrenView}">
+    <div [ngClass]="{childMain:true, childViewW: childrenView, donateView: donateFormView}">
         <div class="imgChild">
             <img *ngIf="childCurr.gender==='girl'" src="/assets/girl.jpg" alt="изображение отсутсвует" class="img">
             <img *ngIf="childCurr.gender==='boy'" src="/assets/boy.jpg" alt="изображение отсутсвует"  class="img">
@@ -20,11 +20,19 @@
                 </tr>
             </table>
         </div>
-        <div class="helpChild">
+        <div *ngIf="!donateFormView" class="helpChild" >
             <button class="helpBtn"  [routerLink]="['/donateHelp', childCurr.id]">Помочь прямо сейчас</button>
         </div>
+        <div *ngIf="donateFormView">
+            <div *ngIf="(childCurr.needSum-childCurr.donatSum)>0"  class="message">
+                Осталось собрать всего {{childCurr.needSum-childCurr.donatSum}} руб. Ваша помощь важна.
+            </div>
+            <div *ngIf="(childCurr.needSum-childCurr.donatSum)<=0"  class="message save">
+                Жизнь этого ребёнка спасена, сбор средств <b>закрыт</b>!
+            </div>            
+        </div>
     </div>
-    <div *ngIf="donateView===true" class="history">
+    <div *ngIf="donateView" class="history">
         <!-- <p *ngFor="let i of temp">{{childCurr.history}}</p> -->
         <p>{{childCurr.history}}</p>
     </div>
