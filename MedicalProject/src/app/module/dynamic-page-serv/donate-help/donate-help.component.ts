@@ -27,7 +27,7 @@ export class DonateHelpComponent implements OnInit{
   //видимость окон
   public open_exit_windowChoise = false;
   public open_exit_windowHistory = false;
-  public idHistory = -1;
+  public childHistory = new Child();
 
   constructor(public fserv: FondService, private store: Store<AppState>,private router: Router) {}
 
@@ -83,13 +83,15 @@ export class DonateHelpComponent implements OnInit{
     }
   }
 
-  setOpenPopUpHistory(id:number):void {
+  setOpenPopUpHistory(chHistory: Child):void {
     this.open_exit_windowHistory = true;
-    this.idHistory = id;
+    this.childHistory = chHistory;
+
   }
 
   setExitPopUpHistory():void {
     this.open_exit_windowHistory = false;
+    this.childHistory = new Child();
   }
   
   getPopUpHistory(): boolean {

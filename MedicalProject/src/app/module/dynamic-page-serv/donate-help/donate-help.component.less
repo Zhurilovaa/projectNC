@@ -3,7 +3,7 @@
 
 @color_glowing_btn: #ec882a;
 @color_input_hover: #f0c8a2;
-@color_history: #8a8787;;
+@color_history: #8a8787;
 
 .text(){
     font-family: 'Arimo', sans-serif;     
@@ -132,7 +132,7 @@
 
         .exit{
             width:100%;
-            height: 10%;
+            //height: 10%;
             display:flex;
             flex-direction: row-reverse;
             margin: 3px;
@@ -140,6 +140,7 @@
             .btn_close {
                 cursor: pointer;
                 width: 3%;
+                aspect-ratio: 1 / 1;
                 border: 0px;
                 background-color: @color_grey;
                 text-transform: uppercase;
@@ -241,10 +242,25 @@
                 text-decoration: underline @color_grey ;
                 color: @color_history;
             }
-        }  
-        .historyPopUp{
-
         }         
-                 
+    } 
+     
+    .historyPopUp{
+        width: 70%;
+        margin: 10%;
+        margin-top: 5%;
+        height: 80vh;
+        .historyChild{
+            display:flex;
+            flex-direction: row;
+            justify-content:center;
+            align-items: stretch;
+            
+            width: 100%;
+            height: 90%; 
+            dynamic-child{
+                width:95%;
+            }
+        }
     }    
 }

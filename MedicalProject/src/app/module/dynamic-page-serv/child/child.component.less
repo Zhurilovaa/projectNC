@@ -1,28 +1,131 @@
 @import "/src/styles.less";
 @import url('https://fonts.googleapis.com/css?family=Arimo'); 
 
-.childMain{
-    //border: 1px solid @color_green;
-    //min-height:275px;
-    min-height: 360px;
+.mainView{
     display:flex;
-    flex-direction: column;
-    //justify-content: flex-start;
-    justify-content: space-between;
-    align-items: center;
-    //align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     align-content: flex-start;
+    width: 100%;
+    height: 100%;
+    //flex-wrap: wrap;
+    .childMain{
+        //border: 1px solid @color_green;
+        //min-height:275px;
+        
+        display:flex;
+        flex-direction: column;
 
-    .imgChild{     
-        .img{
-            width:100%; 
-            margin: 0 auto;           
+        //justify-content: flex-start;
+
+        justify-content: space-between;
+        align-items: center;
+        //align-items: stretch;
+        align-content: flex-start;
+        width:35%;
+
+        .imgChild{    
+            .img{
+                width:100%; 
+                margin: 0 auto;           
+            }
+            border: 1px solid @color_grey;
+            box-shadow: 0 0 0 1px #ccc,
+                            0 -2px 15px -5px @color_green,
+                            2px 0 15px -5px @color_green,
+                            0 2px 15px -5px @color_green,
+                            -2px 0 15px -5px @color_green;
+            &:hover{
+                box-shadow: 0 0 0 1px #ccc,
+                            0 -2px 15px -5px @color_lavender,
+                            2px 0 15px -5px @color_lavender,
+                            0 2px 15px -5px @color_lavender,
+                            -2px 0 15px -5px @color_lavender;
+
+            }
         }
+        .nameChild{
+            margin: 4px;
+            .nameP{
+                color: @color_text_grey;
+                font-size: 1em;
+                letter-spacing: 2px;
+                font-family: 'Arimo', sans-serif;
+                font-weight: bold;
+            }        
+        }
+        .moneyChild{
+            margin: 4px;
+            .infoDonate{
+                color: @color_text_grey;
+                font-size: 1em;
+                letter-spacing: 1px;
+                font-family: 'Arimo', sans-serif;
+                font-weight: bold;
+                .mainTd{
+                    font-size: 0.95em;
+                }
+                .moneyTrue{
+                    color: @color_text_green;
+                }
+                .moneyFalse{
+                    color: @color_orange;
+                }
+            }
+        }
+        .helpChild{
+            width: 80%;
+            height:8%;
+            align-self: flex-start;
+
+            .helpBtn{
+                background: @color_orange;
+                border-radius: 10px;
+                color: @color_white;
+
+                padding: 4px;
+                        
+                font-size: 1em;
+                font-family: 'Arimo', sans-serif;
+                font-weight: bold;
+                width: 100%;
+                height:100%;
+                transition: .3s linear;
+
+                box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .2);
+                &:hover{
+                    background: rgba(0,0,0,.3);
+                    background-color: @color_green;
+                    color:@color_text_green
+                }
+            }
+        }
+    }
+    .childViewW{   
+        width: 100%;         
+        min-height: 360px;
+        .imgChild{ 
+            border: 0px;
+        }
+    }
+    .history{
+        width: 55%;
+        height:100%;
+        border: 1px solid @color_grey;
+        padding: 2px;
+                        
+        font-size: 1em;
+        font-family: 'Arimo', sans-serif;
+        font-weight: bold;
+        color:@color_text_grey;
+        overflow-y: auto;
+
         box-shadow: 0 0 0 1px #ccc,
-                        0 -2px 15px -5px @color_green,
-                        2px 0 15px -5px @color_green,
-                        0 2px 15px -5px @color_green,
-                        -2px 0 15px -5px @color_green;
+                            0 -2px 15px -5px @color_green,
+                            2px 0 15px -5px @color_green,
+                            0 2px 15px -5px @color_green,
+                            -2px 0 15px -5px @color_green;
         &:hover{
             box-shadow: 0 0 0 1px #ccc,
                         0 -2px 15px -5px @color_lavender,
@@ -31,59 +134,6 @@
                         -2px 0 15px -5px @color_lavender;
 
         }
-    }
-    .nameChild{
-        margin: 4px;
-        .nameP{
-            color: @color_text_grey;
-            font-size: 1em;
-            letter-spacing: 2px;
-            font-family: 'Arimo', sans-serif;
-            font-weight: bold;
-        }        
-    }
-    .moneyChild{
-        margin: 4px;
-        .infoDonate{
-            color: @color_text_grey;
-            font-size: 1em;
-            letter-spacing: 1px;
-            font-family: 'Arimo', sans-serif;
-            font-weight: bold;
-            .mainTd{
-                font-size: 0.95em;
-            }
-            .moneyTrue{
-                color: @color_text_green;
-            }
-            .moneyFalse{
-                color: @color_orange;
-            }
-        }
-    }
-    .helpChild{
-        width: 80%;
-        align-self: flex-start;
-
-        .helpBtn{
-            background: @color_orange;
-            border-radius: 10px;
-            color: @color_white;
-
-            padding: 4px;
-                    
-            font-size: 1em;
-            font-family: 'Arimo', sans-serif;
-            font-weight: bold;
-            width: 100%;
-            height:100%;
-            transition: .3s linear;
-
-            box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .2);
-            &:hover{
-                background: rgba(0,0,0,.3);
-                color:@color_text_green
-            }
-        }
+        
     }
 }

@@ -26,6 +26,7 @@ export class FormDonateComponent implements OnInit {
 
   ngOnInit(): void {
     this.childList$ = this.fserv.getAllChildren();
+    
   }
 
   // валидатор проверки суммы доната в диапазоне от 0.1 до 10 000 

@@ -1,26 +1,31 @@
 
-<div class="childMain">
-
-    <div class="imgChild">
-        <img *ngIf="childCurr.gender==='girl'" src="/assets/girl.jpg" alt="изображение отсутсвует" class="img">
-        <img *ngIf="childCurr.gender==='boy'" src="/assets/boy.jpg" alt="изображение отсутсвует"  class="img">
+<div class="mainView">
+    <div [ngClass]="{childMain:true, childViewW: childrenView}">
+        <div class="imgChild">
+            <img *ngIf="childCurr.gender==='girl'" src="/assets/girl.jpg" alt="изображение отсутсвует" class="img">
+            <img *ngIf="childCurr.gender==='boy'" src="/assets/boy.jpg" alt="изображение отсутсвует"  class="img">
+        </div>
+        <div class="nameChild">
+            <p class="nameP">{{nameChild}}</p>
+        </div>
+        <div class="moneyChild">
+            <table class="infoDonate">
+                <tr>
+                    <td class="mainTd">Необходимо:</td>
+                    <td class="moneyTd">{{childCurr.needSum}} (руб.)</td>
+                </tr>
+                <tr>
+                    <td class="mainTd">Собрано:</td> 
+                    <td [ngClass]="{'moneyTrue': status, 'moneyFalse': !(status)}">{{childCurr.donatSum}} (руб.)</td>
+                </tr>
+            </table>
+        </div>
+        <div class="helpChild">
+            <button class="helpBtn"  [routerLink]="['/donateHelp', childCurr.id]">Помочь прямо сейчас</button>
+        </div>
     </div>
-    <div class="nameChild">
-        <p class="nameP">{{nameChild}}</p>
-    </div>
-    <div class="moneyChild">
-        <table class="infoDonate">
-            <tr>
-                <td class="mainTd">Необходимо:</td>
-                <td class="moneyTd">{{childCurr.needSum}} (руб.)</td>
-            </tr>
-            <tr>
-                <td class="mainTd">Собрано:</td> 
-                <td [ngClass]="{'moneyTrue': status, 'moneyFalse': !(status)}">{{childCurr.donatSum}} (руб.)</td>
-            </tr>
-        </table>
-    </div>
-    <div class="helpChild">
-        <button class="helpBtn"  [routerLink]="['/donateHelp', childCurr.id]">Помочь прямо сейчас</button>
+    <div *ngIf="donateView===true" class="history">
+        <!-- <p *ngFor="let i of temp">{{childCurr.history}}</p> -->
+        <p>{{childCurr.history}}</p>
     </div>
 </div>

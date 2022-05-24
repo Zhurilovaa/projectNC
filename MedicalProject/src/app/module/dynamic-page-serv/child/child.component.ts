@@ -16,6 +16,12 @@ export class ChildComponent implements OnInit{
   public status: boolean;
   public idChild: string;
 
+  public urlView: string = "";
+  public childrenView: boolean = false;
+  public donateView: boolean = false;
+
+  //public temp: number[] = []
+
   constructor(private router: Router) {}
 
   ngOnInit(){
@@ -27,5 +33,14 @@ export class ChildComponent implements OnInit{
     else{
       this.status = true;
     }
+
+    //выбираем вид отображения информации
+    this.urlView = this.router.url;
+    this.childrenView = this.urlView.includes("children");
+    this.donateView = this.urlView.includes("donateHelp");
+
+    /*for(let i=0;i<100;i++){
+      this.temp.push(i);
+    }*/
   }
 }
