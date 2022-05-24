@@ -19,6 +19,8 @@ export class FormDonateComponent implements OnInit {
   
   childId$!: Observable<Child[]>;
 
+  popUpSucsses: boolean = false;
+
   //реактивная форма
   formChild: FormGroup = new FormGroup({
     donate: new FormControl(null, [Validators.required, this.donateRangeValidator])
@@ -37,18 +39,19 @@ export class FormDonateComponent implements OnInit {
     const maxDonate: number = 10000.0;
     if (inputDonate > maxDonate) {
         return {
-            "requiredMark<": maxDonate,
-            "inputMark: ": inputDonate
+            "requiredDonate<": maxDonate,
+            "inputDonate: ": inputDonate
         };
     }
     if (inputDonate < minDonate) {
         return {
-            "requiredMark>": minDonate,
-            "inputMark: ": inputDonate
+            "requiredDonate>": minDonate,
+            "inputDonate: ": inputDonate
         };
     }
     return null;
   }
+
   sentDonate(): void {
     if (this.formChild.valid){
       const donateCurr = +(this.formChild.value.donate);
@@ -59,6 +62,18 @@ export class FormDonateComponent implements OnInit {
 
       this.fserv.donateChildById(id,currChild);
     }
+  }
+  resetMyForm(){
+    this.formChild.reset();
+    this.popUpSucsses = false;    
+  }
+
+  getPopUpSucsses(): boolean {
+    return this.popUpSucsses;
+  }
+
+  setOpenPopUpSucsses(): void{
+    this.popUpSucsses = true;
   }
   
 }

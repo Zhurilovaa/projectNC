@@ -1,26 +1,37 @@
 <div class="main">
     <!-- Реактивная форма внесения пожертвований-->
     <div class="form">
-        <form novalidate [formGroup]="formChild" (ngSubmit)="sentDonate()">
-            <div>
-                Внести пожертвование:
-            </div>      
+        <form novalidate [formGroup]="formChild" (ngSubmit)="sentDonate()">  
 
-            <label>
-                <div class="label__text">
-                Средний бал:
+            <div class="inputDonateForm">
+                <div class="inputDonateFormText">
+                Внести пожертвование этому ребёнку:
                 </div>
-                <input type="number" formControlName="donate">
-            </label>
+                <input  type="number" formControlName="donate" class="inputDonate">
+            </div>
 
-            <p *ngIf="formChild.get('donate')?.dirty && formChild.get('donate')?.invalid "
-                class="error">Диапозон 0.0 - 5.0
+            <p *ngIf="formChild.get('donate')?.dirty && formChild.get('donate')?.invalid"
+                class="error">Сумма платежа предусмотрена в границах: 0.1 руб. - 10 000 руб.
             </p>
 
-            <button  [ngClass]="{disabled: formChild.invalid}" type="submit">Ввод</button>
+            <div class="helpChild" >
+                <button  [ngClass]="{helpBtn:true, disabled: formChild.invalid}" type="submit" (click)="setOpenPopUpSucsses()" [disabled]="formChild.invalid">Отправить</button>
+            </div>            
         </form>
     </div>
     <div class="childInfo" *ngFor="let ch of childId$|async">
         <dynamic-child [childCurr]="ch"></dynamic-child>
+    </div>
+</div>
+
+<div class="popup_bg" *ngIf="( getPopUpSucsses()=== true)">
+    <div class="popup">
+        <div class="phrase">
+           <p>Большое спасибо за вашу помощь, она очень ценна!</p> 
+        </div>
+        <div class="okBtnBlock">
+            <button  class="okBtn" type="submit" (click)="resetMyForm()">спасибо</button>
+        </div>
+        
     </div>
 </div>
