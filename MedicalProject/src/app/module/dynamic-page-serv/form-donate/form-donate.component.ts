@@ -76,4 +76,7 @@ export class FormDonateComponent implements OnInit {
     this.popUpSucsses = true;
   }
   
+  getNameChild(ch:Child):string{
+    return (ch.surname+" "+ch.name+" "+ch.patronym);
+  }
 }

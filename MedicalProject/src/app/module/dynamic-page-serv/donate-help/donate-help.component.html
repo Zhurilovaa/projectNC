@@ -49,9 +49,9 @@
                     <td *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd" [routerLink]="['/donateHelp',ch.id]" > {{ch.name}} </td>
                     <td *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd" [routerLink]="['/donateHelp',ch.id]" > {{ch.patronym}} </td>
                     <td *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd" [routerLink]="['/donateHelp',ch.id]" > {{ch.birthDate | date :'dd/MM/yyyy' }} </td>  
-                    <td *ngIf="(ch.needSum-ch.donatSum)>0" [routerLink]="['/donateHelp',ch.id]"> {{ch.needSum-ch.donatSum}} руб.</td>   
-                    <td *ngIf="(ch.needSum-ch.donatSum)<=0" [routerLink]="['/donateHelp',ch.id]"> Необходимая сумма уже собрана!</td> 
-                    <td (click)="setOpenPopUpHistory(ch)"> <p class="history">узнать историю...</p> </td>      
+                    <td *ngIf="(allIsClear() || foundMatch(ch))&&(ch.needSum-ch.donatSum)>0" [routerLink]="['/donateHelp',ch.id]"> {{ch.needSum-ch.donatSum}} руб.</td>   
+                    <td *ngIf="(allIsClear() || foundMatch(ch))&&(ch.needSum-ch.donatSum)<=0" [routerLink]="['/donateHelp',ch.id]"> Необходимая сумма уже собрана!</td> 
+                    <td *ngIf="(allIsClear() || foundMatch(ch))" (click)="setOpenPopUpHistory(ch)"> <p class="history">узнать историю...</p> </td>      
                 </tr>
             </table>  
         </div>

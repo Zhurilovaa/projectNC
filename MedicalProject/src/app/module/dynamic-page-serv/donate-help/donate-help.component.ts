@@ -55,11 +55,11 @@ export class DonateHelpComponent implements OnInit{
 
   foundMatch(child: Child): boolean {
     let match: number = 0;
-    const nameC: string[] = [child.surname,child.name,child.patronym];
+    const nameC: string[] = [child.surname.toLowerCase(),child.name.toLowerCase(),child.patronym.toLowerCase()];
     this.countParam();
     for(let i=0;i<3;i++){      
       if(!this.emptyInput[i]){
-        if(nameC[i].startsWith(this.SNP[i])){
+        if(nameC[i].startsWith(this.SNP[i].toLowerCase())){
           match = match + 1;
         }
       }

@@ -20,20 +20,11 @@
                 </tr>
             </table>
         </div>
-        <div *ngIf="!donateFormView" class="helpChild" >
+        <div class="helpChild" >
             <button class="helpBtn"  [routerLink]="['/donateHelp', childCurr.id]">Помочь прямо сейчас</button>
-        </div>
-        <div *ngIf="donateFormView">
-            <div *ngIf="(childCurr.needSum-childCurr.donatSum)>0"  class="message">
-                Осталось собрать всего {{childCurr.needSum-childCurr.donatSum}} руб. Ваша помощь важна.
-            </div>
-            <div *ngIf="(childCurr.needSum-childCurr.donatSum)<=0"  class="message save">
-                Необходимая сумма уже собрана, но вы можете внести пожертвования в счёт будущих нужд в лечении!
-            </div>            
         </div>
     </div>
     <div *ngIf="donateView" class="history">
-        <!-- <p *ngFor="let i of temp">{{childCurr.history}}</p> -->
         <p>{{childCurr.history}}</p>
     </div>
 </div>
