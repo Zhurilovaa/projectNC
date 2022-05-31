@@ -1,0 +1,56 @@
+<p>lofin-form works!</p>
+<div class="main">
+    <div class="popup_bg">
+        <div class="popup">            
+            <div class="form">
+                <form novalidate [formGroup]="loginForm" (ngSubmit)="login()"> 
+
+                    <div class="inputDonateForm">
+                        <div class="inputDonateFormText">
+                        ****
+                        </div>
+                        <input  type="text" formControlName="adminName" class="inputDonate" placeholder="login">
+                    </div>
+                    <p *ngIf="loginForm.get('adminName')?.dirty && loginForm.get('adminName')?.invalid"
+                        class="error">Нарушены правила ввода логина!
+                    </p>
+                    <div class="inputDonateForm">
+                        <div class="inputDonateFormText">
+                        ****
+                        </div>
+                        <input  type="text" formControlName="adminPass" class="inputDonate" placeholder="password">
+                    </div>
+        
+                    <p *ngIf="loginForm.get('adminPass')?.dirty && loginForm.get('adminPass')?.invalid"
+                        class="error">Нарушены правила ввода пароля!
+                    </p>
+        
+                    <div class="helpChild" >
+                        <button  [ngClass]="{helpBtn:true, disabled: loginForm.invalid}" type="submit" (submit)="login()" [disabled]="loginForm.invalid">Войти</button>
+                    </div>            
+                </form>
+            </div>              
+        </div>
+    </div>    
+</div>
+
+<div class="popup_bg_message" *ngIf="(getPopUpSucsses()=== true)">
+    <div class="popup">
+        <div class="phrase">
+           <p>Вход успешно выполнен!</p> 
+        </div>
+        <div class="okBtnBlock">
+            <button  class="okBtn" type="submit" routerLink="/">ок</button>
+        </div>            
+    </div>
+</div>
+<div class="popup_bg_message" *ngIf="(getPopUpNotSucsses()===true)">
+    <div class="popup">
+        <div class="phrase">
+           <p>Неверные логин или пароль</p> 
+        </div>
+        <div class="okBtnBlock">
+            <button  class="repBtn" (click)="resetMyForm()">повторить попытку</button>
+        </div>            
+    </div>
+</div>

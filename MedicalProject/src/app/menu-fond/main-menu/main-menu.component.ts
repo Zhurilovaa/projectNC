@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainMenuComponent{
 
-  
+  getAdminWork():boolean{
+    if(sessionStorage.getItem('admin') === 'true'){
+      return true;
+    }
+    return false;
+  }
 
 }

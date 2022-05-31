@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Child } from 'src/app/server/childDate/child';
+import { Child } from 'src/app/server/Date/child';
 import { FondService } from 'src/app/server/service/fond.service';
 import { AppState } from 'src/app/store/state/app.state';
 

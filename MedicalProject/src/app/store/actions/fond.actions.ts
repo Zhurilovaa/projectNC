@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
 
-import { Child, UpdateChild } from "src/app/server/childDate/child";
+import { Child, UpdateChild } from "src/app/server/Date/child";
 
 export const SET_ALL_CHILDREN = "[CHILD]SET_ALL_CHILDREN";
 export const SET_CHILD_ID = "[CHILD]SET_CHILD_ID";

@@ -4,7 +4,7 @@
     <div class="main">
     
         <div class="panel">
-            <div *ngFor="let ch of children|async" class="childPanel">
+            <div *ngFor="let ch of childList$|async" class="childPanel">
                 <dynamic-child [childCurr]="ch"></dynamic-child> 
             </div>
         </div>

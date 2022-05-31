@@ -1,12 +1,15 @@
 import { FondState, initialFondState } from "./fond.state";
 import { fondReducer } from "../reducers/fond.reducer";
+import { ConfigState, initialConfigState } from "./config.state";
 
 export interface AppState{
-    children: FondState
+    children: FondState,
+    config: ConfigState,
 }
 
 export const initialAppState: AppState = {
-    children: initialFondState
+    children: initialFondState,
+    config: initialConfigState,
 };
 
 export function getInitialState(): AppState{
@@ -14,5 +17,5 @@ export function getInitialState(): AppState{
 }
 
 export const appReducers: any = {
-    children: fondReducer
+    children: fondReducer,
 };

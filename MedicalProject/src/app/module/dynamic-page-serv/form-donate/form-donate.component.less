@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Arimo'); 
 
 @color_input_focus: #baecba;
+@color_input_disabled:#cac8c8;
 
 @keyframes glowing {
     0% { background-color: @color_orange; box-shadow: 0 0 1.5px @color_orange; }
@@ -48,15 +49,19 @@
                     color: @color_text_grey;
                 } 
             }
-            .inputInform{
+            .inputInForm{
                 margin: 5px;
                 padding:6px;
                 width:30vw;
                 min-width: 335px;
                 font-size: 1.5em;
                 border: 1px solid @color_green;
+                background-color: @color_input_disabled;
                 border-radius: 10px;
-                outline: none;  
+                outline: none; 
+                &:hover{
+                    cursor: not-allowed; 
+                }
             }
             .message{
                 margin: 20px 0px;

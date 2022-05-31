@@ -12,7 +12,7 @@ import { selectChildren, selectChildID } from "src/app/store/selectors/fond.sele
 
 import { environment } from "src/environments/environment";
 
-import { Child, UpdateChild } from "../childDate/child";
+import { Child, UpdateChild } from "../Date/child";
 
 @Injectable()
 export class FondService{

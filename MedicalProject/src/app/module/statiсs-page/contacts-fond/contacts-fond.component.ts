@@ -6,11 +6,16 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./contacts-fond.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ContactsFondComponent implements OnInit {
+export class ContactsFondComponent{
 
-  constructor() { }
+  public nameFond: string = 'Некоммерческая организация "Нижегородский онкологический научный центр';
 
-  ngOnInit(): void {
+  public adminWork = !!sessionStorage.getItem('admin');
+
+  
+
+  getAdminWork():boolean{
+    return !!sessionStorage.getItem('admin');
   }
 
 }

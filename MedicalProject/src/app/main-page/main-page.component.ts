@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Child } from '../server/childDate/child';
 import { FondService } from '../server/service/fond.service';
 
 @Component({

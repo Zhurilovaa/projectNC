@@ -55,6 +55,7 @@ a {
                 .submenu_link { 
                     font-family:  'Arimo', sans-serif;
                     //white-space: nowrap;
+                    border-radius: 0px;
                     font-size: 100%;
                     .link{                        
                         color: @color_text_grey;
@@ -113,12 +114,24 @@ a {
                         background: rgba(175, 83, 8, 0.651);
                         border-radius: 10px;
                         color:@color_white;
-                    }
-                }                      
+                    }                    
+                }    
+                .disabled{                     
+                    background-color: @color_grey;
+                    color: @color_text_grey;
+                }                  
             }
             
         }
     }    
+}
+
+.disabled{
+    pointer-events: none; /* делаем ссылку некликабельной */
+    cursor: default; 
+    background-color: @color_grey;
+    color: @color_text_grey;
+    border-radius: 10px;
 }
 
 //Логотип сайта    

@@ -10,7 +10,7 @@
                 <div class="inputDonateFormText">
                 Назначение пожертвования: 
                 </div>
-                <input  type="text" class="inputInform" [disabled]="true" value="Благотворительное пожертвование">
+                <input  type="text" class="inputInForm" [disabled]="true" value="Благотворительное пожертвование">
             </div>
 
             <div class="inputDonateForm">
@@ -19,7 +19,7 @@
                 </div>
 
                 <div *ngFor="let ch of childId$|async">
-                    <input  type="text" class="inputInform" [disabled]="true" [value]="getNameChild(ch)">
+                    <input  type="text" class="inputInForm" [disabled]="true" [value]="getNameChild(ch)">
                  
                     <div *ngIf="(ch.needSum-ch.donatSum)>0"  class="message">
                         Осталось собрать всего {{ch.needSum-ch.donatSum}} руб. Ваша помощь важна.

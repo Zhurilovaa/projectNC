@@ -12,7 +12,7 @@ import { AppState } from "../state/app.state";
 
 import { environment } from "src/environments/environment";
 
-import { Child, UpdateChild } from "src/app/server/childDate/child";
+import { Child, UpdateChild } from "src/app/server/Date/child";
 
 @Injectable({providedIn: "root"})
 export class FondEffects {

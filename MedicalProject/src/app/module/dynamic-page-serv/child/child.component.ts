@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { Child } from 'src/app/server/childDate/child';
+import { Child } from 'src/app/server/Date/child';
 
 @Component({
   selector: 'dynamic-child',

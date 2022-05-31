@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Child, UpdateChild } from 'src/app/server/childDate/child';
+import { Child, UpdateChild } from 'src/app/server/Date/child';
 import { FondService } from 'src/app/server/service/fond.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/state/app.state';
@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { selectChildren} from 'src/app/store/selectors/fond.selectors';
 
 @Component({
   selector: 'app-form-donate',

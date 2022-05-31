@@ -1,4 +1,4 @@
-import { Child } from "src/app/server/childDate/child";
+import { Child } from "src/app/server/Date/child";
 
 import { createEntityAdapter } from "@ngrx/entity"
 

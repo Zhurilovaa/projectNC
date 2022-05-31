@@ -1,6 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Child } from './server/childDate/child';
-import { FondService } from './server/service/fond.service';
 
 
 
@@ -11,5 +9,8 @@ import { FondService } from './server/service/fond.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent { 
+
+  constructor(){
+  }
 
 }
