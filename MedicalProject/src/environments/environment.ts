@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   childFondUrl : "http://localhost:3000/fond-server",
+  configFondUrl: "http://localhost:3000/config",
 };
 
 /*

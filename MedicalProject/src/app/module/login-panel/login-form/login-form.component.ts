@@ -3,8 +3,11 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { AppState } from 'src/app/store/state/app.state';
-import { Admin } from 'src/app/server/Date/admin';
-import { selectConfig } from 'src/app/store/selectors/config.selectors';
+
+import { ConfigService } from 'src/app/server/service/config.service';
+
+import { AdminLogin } from 'src/app/server/Date/config_date';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -14,7 +17,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginFormComponent implements OnInit {
 
-  private dataAdmin: Observable<Admin>;
+  //private dataAdmin: Observable<Admin>;
   private popUpSucsses: boolean = false;
   private popUpNotSucsses: boolean = false;
 
@@ -24,10 +27,10 @@ export class LoginFormComponent implements OnInit {
     adminPass: new FormControl(null, [Validators.required, Validators.minLength(1)])
   });
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private configServ: ConfigService) { }
 
   ngOnInit(): void {
-    this.dataAdmin = this.store.select(selectConfig);
+    //this.dataAdmin = this.store.select(selectConfig);
   }
 
   login(): void{
@@ -35,29 +38,23 @@ export class LoginFormComponent implements OnInit {
       const nameAdmin: string = this.loginForm.value.adminName;
       const passwordAdmin: string = this.loginForm.value.adminPass;
 
-      //const trueName: boolean = (this.dataAdmin.adminName===nameAdmin) ? true : false;      
-
-      //console.log("trueName ",trueName);
-
-      //const truePass: boolean = (this.dataAdmin.adminPassword===passwordAdmin) ? true : false;       
-
-      //console.log("truePass ",truePass);
-
-      if(nameAdmin === 'admin' && passwordAdmin==='pass'){
-        sessionStorage.setItem('admin','true');
+      const loginAttempt: AdminLogin = {
+        login: nameAdmin,
+        password: passwordAdmin,
+      }   
+      this.configServ.login(loginAttempt); 
+      /*
+      ???????? как вывести сообщения и надо ли?
+      if(sessionStorage.getItem('admin')){
+        console.log("зашел");
+        this.popUpSucsses = true;
       }
-
-      switch(sessionStorage.getItem('admin')){
-        case "true":
-          this.popUpSucsses = true;
-          break;
-        case "false":
-          this.popUpNotSucsses = true;
-          break;
-        default:
-          break;
+      else{
+        this.popUpNotSucsses = true;
       }
+      */
     }
+     
   }
 
   getPopUpSucsses(): boolean{

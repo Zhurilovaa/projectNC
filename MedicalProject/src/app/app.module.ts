@@ -15,7 +15,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { MainMenuComponent } from './menu-fond/main-menu/main-menu.component';
 import { FooterComponent } from './menu-fond/footer/footer.component';
 
-import { FondService } from './server/service/fond.service';
+import { ConfigService } from './server/service/config.service';
 
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
@@ -47,7 +47,7 @@ import { Store } from '@ngrx/store';
     AppRoutingModule,  //маршуртизация
   ],
   providers: [{
-    provide: FondService,
+    provide: ConfigService,
     deps: [HttpClient, Store]
   }],
   bootstrap: [AppComponent]

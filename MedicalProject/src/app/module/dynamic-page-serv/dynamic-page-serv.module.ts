@@ -10,6 +10,10 @@ import { ChildComponent } from './child/child.component';
 import { DonateHelpComponent } from './donate-help/donate-help.component';
 import { FormDonateComponent } from './form-donate/form-donate.component';
 
+import { FondService } from 'src/app/server/service/fond.service';
+import { HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+
 @NgModule({
   declarations: [
     ChildrenComponent,
@@ -25,6 +29,10 @@ import { FormDonateComponent } from './form-donate/form-donate.component';
   ],
   exports:[
     ChildrenComponent,    
-  ]
+  ],
+  providers: [{
+    provide: FondService,
+    //deps: [HttpClient, Store]
+  }]
 })
 export class DynamicPageServModule { }
