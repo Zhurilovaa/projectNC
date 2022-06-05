@@ -26,9 +26,9 @@ export class ConfigService{
     login(body: AdminLogin){
         this.http.post(this.configUrl, body).subscribe( (answer) => {
             if(answer){
-                sessionStorage.setItem('admin', 'true');
-            }
-        });
+                sessionStorage.setItem('admin', 'true');                
+            }           
+        });       
     }
 
  

@@ -12,6 +12,8 @@ import { AboutFoundComponent } from '../module/statiсs-page/about-found/about-f
 import { ContactsFondComponent } from '../module/statiсs-page/contacts-fond/contacts-fond.component';
 import { NewsFondComponent } from '../module/statiсs-page/news-fond/news-fond.component';
 
+import { LoginOutGuard } from './login.guard';
+
 //import { GetHelpFondComponent } from '../module/statiсs-page/get-help-fond/get-help-fond.component';
 //import { PartnersFondComponent } from '../module/statiсs-page/partners-fond/partners-fond.component';
 //import { ProjectFondComponent } from '../module/statiсs-page/project-fond/project-fond.component';
@@ -57,10 +59,12 @@ const routes: Routes = [
   {
     path: 'admin',
     component: LoginFormComponent,
+    //canDeactivate: [LoginOutGuard],
   }, 
   { 
     path: '**', 
     component: MainPageComponent,
+    //canActivate: [LoginOutGuard]
   },
 ];
 

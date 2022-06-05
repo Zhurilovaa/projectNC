@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef,Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Child, UpdateChild } from 'src/app/server/Date/child';
 import { FondService } from 'src/app/server/service/fond.service';
@@ -12,7 +12,8 @@ import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-form-donate',
   templateUrl: './form-donate.component.html',
-  styleUrls: ['./form-donate.component.less']
+  styleUrls: ['./form-donate.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormDonateComponent implements OnInit {
   
@@ -25,7 +26,7 @@ export class FormDonateComponent implements OnInit {
     donate: new FormControl(null, [Validators.required, this.donateRangeValidator])
   });
 
-  constructor(public fserv: FondService, private store: Store<AppState>,private activateRoute: ActivatedRoute) {}
+  constructor(public fserv: FondService, private store: Store<AppState>,private activateRoute: ActivatedRoute, private ref: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.childId$ = this.fserv.getChildID(this.activateRoute.snapshot.params['id']);   

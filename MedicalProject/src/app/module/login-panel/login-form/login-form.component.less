@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Arimo'); 
 
 @color_back_green: #c4f47e;
+@color_back_input: #e6e6e6;
+@color_error_input: #c42b2b;
 
 .main{
     .popup_bg{
@@ -33,17 +35,137 @@
             transition: 0.5s all; 
     
             display:flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-around;
+
+            .imgLogin{
+                margin: 2px;
+                padding: 5px;
+            }
+
+            @media (max-width: 900px) {
+                .imgLogin {display: none;}
+            }
 
             .form{
+                width: 45%;
+                align-self: stretch;
+                .mainPhrase{
+                    text-align: center;
+                    padding:10px;
+                    color: @color_text_green;
+                    line-height: 1.2;
+                    width: 100%;
+                    padding-bottom: 54px;
+                    font-size: 2em;
+                    font-family: 'Arimo', sans-serif;
+                    font-weight: bold;
+                }
+                .inputDonate{
+                    width: 100%;
+                    min-width: 150px;
 
-            }    
+                    margin: 15px;                    
+                    padding: 10px 30px 10px 30px;
+
+                    font-family: 'Arimo', sans-serif;
+                    font-size: 1.1em;
+                    line-height: 1.5;
+
+                    color: @color_text_grey;
+                    background: @color_back_input;
+
+                    border-radius: 25px;
+                    outline: none;
+                    border: none;
+
+                    display: block; 
+
+                    &:focus{
+                        border:1px solid @color_green;
+                        border-radius: 10px;
+                    }
+                }
+                .error{
+                    width:100%;
+                    padding: 5px;
+                    margin: 5px;
+
+                    color: @color_error_input;
+                    font-family: 'Arimo', sans-serif;
+                    font-size: 0.9em;
+                    font-weight: bold;
+
+                    text-align: center;
+
+                }
+
+                .helpChild{
+                    //background: @color_text_green;
+                   // border-radius: 10px;
+
+                    .helpBtn{
+                        width: 100%;
+                        min-width: 150px;
+                        height:100%;
+
+                        margin: 15px;                    
+                        padding: 10px 30px 10px 30px;
+
+                        background: @color_text_green;
+                        border-radius: 25px;
+
+                        color: @color_white;
+
+                        cursor: pointer;
+                        
+                        font-size: 1.3em;
+                        font-family: 'Arimo', sans-serif;
+                        font-weight: bold;
+                        
+                        transition: .3s linear;
+        
+                        box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .2);
+                        &:hover{
+                            background: @color_green;
+                            color:@color_white;
+                        }
+                    }
+                    .disabled{
+                        cursor:not-allowed;      
+                        &:hover{
+                            background-color: @color_grey;
+                            color: white;
+                        }  
+                    }
+                }
+                .router{
+                    margin: 5px;
+                    .mainRoute{
+                        text-decoration: underline @color_grey ;
+                        color: @color_history;
+
+                        cursor: pointer;
+                        
+                        font-size: 1em;
+                        font-family: 'Arimo', sans-serif;
+                        font-weight: bold;
+
+                        &:hover{
+                            color: @color_text_green;
+                            text-decoration: underline @color_text_green ;
+                        }
+                    }
+                }              
+                
+            } 
             
         }        
     }
 }
+
+
 .popup_bg_message{
     position: fixed; //фиксируем относительно окна браузера
     top: 0;

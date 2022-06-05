@@ -1,23 +1,26 @@
 <p>lofin-form works!</p>
 <div class="main">
     <div class="popup_bg">
-        <div class="popup">            
+        <div class="popup">
+
+            <div class="imgLogin">
+                <img src="/assets/login.png" alt="изображение отсутствует">
+            </div> 
+
             <div class="form">
                 <form novalidate [formGroup]="loginForm" (ngSubmit)="login()"> 
 
+                    <div class="mainPhrase">
+                        <p>Admin Login</p>
+                    </div>
+
                     <div class="inputDonateForm">
-                        <div class="inputDonateFormText">
-                        ****
-                        </div>
                         <input  type="text" formControlName="adminName" class="inputDonate" placeholder="login">
                     </div>
                     <p *ngIf="loginForm.get('adminName')?.dirty && loginForm.get('adminName')?.invalid"
                         class="error">Нарушены правила ввода логина!
                     </p>
                     <div class="inputDonateForm">
-                        <div class="inputDonateFormText">
-                        ****
-                        </div>
                         <input  type="text" formControlName="adminPass" class="inputDonate" placeholder="password">
                     </div>
         
@@ -27,6 +30,9 @@
         
                     <div class="helpChild" >
                         <button  [ngClass]="{helpBtn:true, disabled: loginForm.invalid}" type="submit" (submit)="login()" [disabled]="loginForm.invalid">Войти</button>
+                    </div> 
+                    <div class="router">
+                        <a  ngClass="mainRoute" routerLink="/">вернуться на главную страницу...</a>
                     </div>            
                 </form>
             </div>              
@@ -37,13 +43,14 @@
 <div class="popup_bg_message" *ngIf="(getPopUpSucsses()=== true)">
     <div class="popup">
         <div class="phrase">
-           <p>Вход успешно выполнен!</p> 
+           <p>Попытка входа выполнена</p> 
         </div>
         <div class="okBtnBlock">
-            <button  class="okBtn" type="submit" routerLink="/">ок</button>
+            <button  class="okBtn" type="submit" (click)="resetMyForm()">ок</button>
         </div>            
     </div>
 </div>
+<!-- 
 <div class="popup_bg_message" *ngIf="(getPopUpNotSucsses()===true)">
     <div class="popup">
         <div class="phrase">
@@ -54,3 +61,4 @@
         </div>            
     </div>
 </div>
+ -->

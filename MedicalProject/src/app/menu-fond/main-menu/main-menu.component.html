@@ -217,6 +217,11 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="menu_point" *ngIf="getAdminWork()">
+                        <div class="help">
+                            <button [ngClass]="{ menu_link:true}" (click)="exitAdmin()">Выход</button>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>

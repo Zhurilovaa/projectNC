@@ -1,5 +1,4 @@
-import { IfStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy,ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -10,7 +9,8 @@ import { AppState } from 'src/app/store/state/app.state';
 @Component({
   selector: 'app-donate-help-form',
   templateUrl: './donate-help.component.html',
-  styleUrls: ['./donate-help.component.less']
+  styleUrls: ['./donate-help.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DonateHelpComponent implements OnInit{
 
@@ -29,7 +29,7 @@ export class DonateHelpComponent implements OnInit{
   public open_exit_windowHistory = false;
   public childHistory = new Child();
 
-  constructor(public fserv: FondService, private store: Store<AppState>,private router: Router) {}
+  constructor(public fserv: FondService, private store: Store<AppState>,private router: Router, private ref: ChangeDetectorRef) {}
 
   
 
