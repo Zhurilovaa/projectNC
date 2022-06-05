@@ -11,15 +11,15 @@
             <nav class="top-menu">
                 <ul class="menu-main">
                     <li class="menu_point">
-                        <a routerLink="/about"  routerLinkActive="activePage" [ngClass]="{menu_link:true, disabled: getAdminWork()}">О фонде</a>
+                        <a routerLink="/about"  routerLinkActive="activePage" [ngClass]="{menu_link:true, disabled: admin}">О фонде</a>
                         <ul class="submenu">
                             <li>
-                                <div [ngClass]="{submenu_link:true, disabled: getAdminWork()}">
+                                <div [ngClass]="{submenu_link:true, disabled: admin}">
                                     <a class="link" [routerLink]="['/about','aboutFond']">О фонде</a>
                                 </div>
                             </li>
                             <li>
-                                <div [ngClass]="{submenu_link:true, disabled: getAdminWork()}">
+                                <div [ngClass]="{submenu_link:true, disabled: admin}">
                                     <a class="link"   [routerLink]="['/about','ourTeam']">Наша команда</a>
                                 </div>
                             </li>
@@ -41,7 +41,7 @@
                             </li>
                             -->
                             <li>
-                                <div [ngClass]="{submenu_link:true, disabled: getAdminWork()}">
+                                <div [ngClass]="{submenu_link:true, disabled: admin}">
                                     <a class="link_help" routerLink="/donateHelp">Помочь</a>
                                 </div>
                             </li>
@@ -65,7 +65,7 @@
                         </ul>
                     </li>
                     <li class="menu_point">
-                        <a routerLink="/children" routerLinkActive="activePage" [ngClass]="{menu_link:true, disabled: getAdminWork()}">Дети</a>
+                        <a routerLink="/children" routerLinkActive="activePage" [ngClass]="{menu_link:true, disabled: admin}">Дети</a>
                         <!-- <ul class="submenu">
                             <li>
                                 <div class="submenu_link">
@@ -190,10 +190,10 @@
                     </li>
                     <li class="menu_point">
                         <div class="help">
-                            <a routerLink="/donateHelp" [ngClass]="{ menu_link:true, disabled: getAdminWork()}">Помочь</a>
+                            <a routerLink="/donateHelp" [ngClass]="{ menu_link:true, disabled: admin}">Помочь</a>
                             <ul class="submenu">
                                 <li>
-                                    <div [ngClass]="{submenu_link:true, disabled: getAdminWork()}">
+                                    <div [ngClass]="{submenu_link:true, disabled: admin}">
                                         <a class="link"  routerLink="/donateHelp">Помочь детям</a>
                                     </div>
                                 </li>
@@ -217,7 +217,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="menu_point" *ngIf="getAdminWork()">
+                    <li class="menu_point" *ngIf="admin">
                         <div class="help">
                             <button [ngClass]="{ menu_link:true}" (click)="exitAdmin()">Выход</button>
                         </div>

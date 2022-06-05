@@ -25,6 +25,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { FondEffects } from './store/effects/fond.effects';
 import { Store } from '@ngrx/store';
 import { LoginOutGuard } from './app-routing/login.guard';
+import { ConfigEffects } from './store/effects/config.effects';
 
 @NgModule({
   declarations: [
@@ -44,11 +45,10 @@ import { LoginOutGuard } from './app-routing/login.guard';
     StoreModule.forRoot(appReducers, {
       metaReducers: [handleLog]
     }),
-    EffectsModule.forRoot([FondEffects]),
+    EffectsModule.forRoot([ConfigEffects]),
     AppRoutingModule,  //маршуртизация
   ],
   providers: [
-    //[LoginOutGuard],
     {
       provide: ConfigService,
       deps: [HttpClient, Store]

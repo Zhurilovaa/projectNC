@@ -14,6 +14,12 @@ import { FondService } from 'src/app/server/service/fond.service';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from 'src/app/store/state/app.state';
+import { handleLog } from 'src/app/store/reducers/logger';
+import { EffectsModule } from '@ngrx/effects';
+import { FondEffects } from 'src/app/store/effects/fond.effects';
+
 @NgModule({
   declarations: [
     ChildrenComponent,
@@ -25,7 +31,8 @@ import { Store } from '@ngrx/store';
     CommonModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EffectsModule.forRoot([FondEffects]),
   ],
   exports:[
     ChildrenComponent,    

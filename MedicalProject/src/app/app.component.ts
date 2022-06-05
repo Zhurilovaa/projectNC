@@ -10,5 +10,10 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent { 
-
+  getAdminWork():boolean{
+    if(sessionStorage.getItem('admin') === 'true'){
+      return true;
+    }
+    return false;
+  }
 }

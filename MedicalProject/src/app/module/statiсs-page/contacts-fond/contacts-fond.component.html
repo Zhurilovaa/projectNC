@@ -3,39 +3,18 @@
 
     <div class="nameFond">
         <p class="phrase">Название:</p>
-        <ng-container *ngIf="adminWork then inputTemplate else valueTemplate"></ng-container>
+        <!-- <ng-container *ngIf="getAdminWork() then inputTemplate else valueTemplate"></ng-container> -->
     </div>
 
-
-
-короткое название : Фонд "НОНЦ"
-
-КОНТАКТЫ
-
-Тел.: (831) 415 57 75
-
-Факс: (831) 469 07 36
-
-Эл.почта: fondnonc@mail.ru
-
-Фактический адрес: 603024, Н.Новгород,  ул. Невзоровых д. 49 помещение 9.
-
- 
-
-РЕКВИЗИТЫ
-
-ОГРН 1045207474663
-
-Фонд НОНЦ
-
-ИНН 5260139846, КПП 526201001
-
-Юридический адрес: 603115, г.Н. Новгород, ул. Тверская, 20
+    
 </div>
 
 <ng-template #inputTemplate>
-    <textarea [(ngModel)]="nameFond"></textarea>
+        <!-- <textarea [(ngModel)]="edithContent"></textarea>     -->
+        <!-- <button (click)="setNewContact('nameOfTheOrganization', name.value)">Принять изменения</button> -->
 </ng-template>
 <ng-template #valueTemplate>
-    <p>{{nameFond}}</p>
+    <!-- <div *ngFor="let con of content$|async" class="childPanel"> -->
+        <!-- <p>{{con.nameOfTheOrganization}}</p> -->
+    <!-- </div> -->
 </ng-template>

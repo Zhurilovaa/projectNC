@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'main-menu-head',
@@ -8,19 +8,19 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/c
 })
 export class MainMenuComponent{
 
+  @Input() admin: boolean = false;
+
   constructor(private ref: ChangeDetectorRef){}
 
+/*
   getAdminWork():boolean{
-    if(sessionStorage.getItem('admin') === 'true'){
-      return true;
-    }
-    return false;
+    return this.admin;
   }
-
+*/
   exitAdmin(){
     if(sessionStorage.getItem('admin')){
-      sessionStorage.removeItem('admin'); 
+      sessionStorage.removeItem('admin');
+      this.admin=false; 
     }
   }
-
 }
