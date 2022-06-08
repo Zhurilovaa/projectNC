@@ -47,6 +47,7 @@ const routes: Routes = [
   {
     path: 'contacts',
     component: ContactsFondComponent,
+    canDeactivate: [LoginOutGuard],
   },
   {
     path: 'donateHelp/:id',
@@ -59,7 +60,6 @@ const routes: Routes = [
   {
     path: 'admin',
     component: LoginFormComponent,
-    //canDeactivate: [LoginOutGuard],
   }, 
   { 
     path: '**', 

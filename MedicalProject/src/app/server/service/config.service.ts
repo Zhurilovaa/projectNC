@@ -43,13 +43,25 @@ export class ConfigService{
         });
         return this.store.select(selectContactConfig);
     }
-    getNewsContent():Observable<Contacts[]>{
-        this.http.get<Contacts[]>(`${this.configUrl}/news`).subscribe( (newsTemp) => {
-            this.contactContent = newsTemp;
-            return this.store.dispatch(new SetContactContentAction(newsTemp));
+    getNewsContent():Observable<News[]>{
+        this.http.get<News[]>(`${this.configUrl}/news`).subscribe( (newsTemp) => {
+            this.newsContent = newsTemp;
+            return this.store.dispatch(new SetNewsContentAction(newsTemp));
         });
-        return this.store.select(selectContactConfig);
+        return this.store.select(selectNewsConfig);
     }
+
+    //отправка изменений
+    edithContactContent(edithContent: Contacts){
+
+        this.http.put<Contacts[]>(`${this.configUrl}/contact`, edithContent).subscribe( (newContent) => {
+            this.store.dispatch(new SetContactContentAction(newContent));
+        })
+        return 1;
+    }
+
+
+    //добавление новых новостей
 
  
 }

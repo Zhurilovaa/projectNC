@@ -12,7 +12,7 @@ export interface News{
     text: string,
 }
 
-export interface ActualAdress{
+export interface ActualAddress{
     postalCode: number,
     city: string,
     street: string,
@@ -24,7 +24,7 @@ export interface BusinessAddress{
     city: string,
     street: string,
     build: number,
-    office:  number,
+    office?:  number,
 }
 
 export interface Requisites{
@@ -40,7 +40,7 @@ export interface Contacts{
     telephone: string,
     fax: string,
     email: string,
-    actualAddress: ActualAdress,
+    actualAddress: ActualAddress,
     businessAddress:BusinessAddress,
     requisites: Requisites,        
 }

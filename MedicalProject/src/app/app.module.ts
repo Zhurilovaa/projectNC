@@ -24,8 +24,8 @@ import { handleLog } from './store/reducers/logger';
 import { EffectsModule } from '@ngrx/effects';
 import { FondEffects } from './store/effects/fond.effects';
 import { Store } from '@ngrx/store';
-import { LoginOutGuard } from './app-routing/login.guard';
 import { ConfigEffects } from './store/effects/config.effects';
+import { LoginOutGuard } from './app-routing/login.guard';
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import { ConfigEffects } from './store/effects/config.effects';
     AppRoutingModule,  //маршуртизация
   ],
   providers: [
+    LoginOutGuard,
     {
       provide: ConfigService,
       deps: [HttpClient, Store]
