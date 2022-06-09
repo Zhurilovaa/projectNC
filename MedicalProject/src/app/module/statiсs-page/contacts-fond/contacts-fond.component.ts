@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Input, OnInit, ɵflushModuleScopingQueueAsMuchAsPossible} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ComponentCanDeactivate } from 'src/app/app-routing/login.guard';
 import { Observable, tap } from 'rxjs';
-import { ActualAddress, BusinessAddress, Contacts, Requisites } from 'src/app/server/Date/config_date';
+import { Contacts } from 'src/app/server/Date/config_date';
 import { ConfigService } from 'src/app/server/service/config.service';
 
 @Component({
@@ -16,8 +16,6 @@ export class ContactsFondComponent implements OnInit, DoCheck, ComponentCanDeact
   public adminWork: boolean;
 
   public content$!: Observable<Contacts[]>; 
-
-  public edithContent: Contacts;
 
   public formEdith: FormGroup = new FormGroup({
     nameOfTheOrganization: new FormControl(null, [Validators.minLength(1),Validators.pattern("[а-я А-Я 0-9 \"]*")]),
@@ -141,7 +139,6 @@ export class ContactsFondComponent implements OnInit, DoCheck, ComponentCanDeact
       };
 
       this.formEdith.reset();
-      console.log(this.formEdith.dirty);
 
       this.cserv.edithContactContent(edithContactValue);
     }

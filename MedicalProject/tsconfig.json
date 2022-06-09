@@ -22,7 +22,6 @@
     "lib": [
       "es2020",
       "dom",
-      "dom.iterable"
     ]
   },
   "angularCompilerOptions": {

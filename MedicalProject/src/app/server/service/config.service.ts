@@ -52,9 +52,9 @@ export class ConfigService{
     }
 
     //отправка изменений
-    edithContactContent(edithContent: Contacts){
+    edithContactContent(body: Contacts){
 
-        this.http.put<Contacts[]>(`${this.configUrl}/contact`, edithContent).subscribe( (newContent) => {
+        this.http.put<Contacts[]>(`${this.configUrl}/contact`, body).subscribe( (newContent) => {
             this.store.dispatch(new SetContactContentAction(newContent));
         })
         return 1;
@@ -62,6 +62,13 @@ export class ConfigService{
 
 
     //добавление новых новостей
+    addNewNews(body: News){
+
+        this.http.post<News[]>(`${this.configUrl}/news`, body).subscribe( (newContent) => {
+            this.store.dispatch(new SetNewsContentAction(newContent));
+        })
+        return 1;
+    }
 
  
 }

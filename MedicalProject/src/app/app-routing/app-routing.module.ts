@@ -27,14 +27,11 @@ const routes: Routes = [
   {
     path: 'about',
     redirectTo: '/about/aboutFond',
-  }, 
-  {
-    path: 'news/admin',
-    component: NewsFondComponent,
-  }, 
+  },
   {
     path: 'news',
     component: NewsFondComponent,
+    //нужен защитник на уход
   },
   {
     path: 'children',
@@ -52,6 +49,7 @@ const routes: Routes = [
   {
     path: 'donateHelp/:id',
     component: FormDonateComponent,
+    //нужен защитник на переход!
   },
   {
     path: 'donateHelp',
@@ -64,7 +62,6 @@ const routes: Routes = [
   { 
     path: '**', 
     component: MainPageComponent,
-    //canActivate: [LoginOutGuard]
   },
 ];
 

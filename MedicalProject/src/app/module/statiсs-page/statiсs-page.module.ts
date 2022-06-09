@@ -7,12 +7,15 @@ import { ReportsFondComponent } from './reports-fond/reports-fond.component';
 import { GetHelpFondComponent } from './get-help-fond/get-help-fond.component';
 import { ProjectFondComponent } from './project-fond/project-fond.component';
 import { NewsFondComponent } from './news-fond/news-fond.component';
+import { NewsBlockComponent } from './news-block/news-block.component';
 import { ContactsFondComponent } from './contacts-fond/contacts-fond.component';
 import { PartnersFondComponent } from './partners-fond/partners-fond.component';
+
 import { AppRoutingModule} from 'src/app/app-routing/app-routing.module';
+
 import { ActualAdressPipe, BusinessAdressPipe } from 'src/app/pipes/adress.pipe';
-import { LoginOutGuard } from 'src/app/app-routing/login.guard';
-import { InputValidStyleDirective, StyleFormTrDirective } from 'src/app/directives/input.directive';
+import { InputValidStyleDirective, StyleFormHeadDirective, StyleFormTrDirective } from 'src/app/directives/input.directive';
+import { DateNewsPipe } from 'src/app/pipes/date.pipe';
 
 
 @NgModule({
@@ -26,8 +29,11 @@ import { InputValidStyleDirective, StyleFormTrDirective } from 'src/app/directiv
     PartnersFondComponent,
     ActualAdressPipe,
     BusinessAdressPipe,
+    DateNewsPipe,
     InputValidStyleDirective,
     StyleFormTrDirective,
+    StyleFormHeadDirective,
+    NewsBlockComponent,
   ],
   imports: [
     CommonModule,

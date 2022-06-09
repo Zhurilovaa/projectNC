@@ -1,0 +1,45 @@
+@import "/src/styles.less";
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
+.newsBlock{
+    width: 100%;
+
+    padding: 3px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    //border-bottom: 1px solid @color_grey;
+    
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    &:hover{
+        background: @color_back_green;        
+    }
+
+    .dateBlock{
+        .dateNews{
+            font-family: 'Arimo', sans-serif;
+            font-size: 1em;
+            font-weight: 600;
+            color: @color_lavender_hover;
+        }
+    }
+    .newsContent{
+        padding:3px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        .textNews{
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: @color_text_grey;
+            text-indent: 25px; 
+            line-height: 1.5;
+        }
+    }
+}

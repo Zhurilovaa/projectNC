@@ -40,9 +40,5 @@ export class ChildComponent implements OnInit{
     this.childrenView = this.urlView.includes("children");
     this.donateView = this.urlView.includes("donateHelp");
     this.donateFormView = this.urlView.includes("donateHelp/");
-
-    /*for(let i=0;i<100;i++){
-      this.temp.push(i);
-    }*/
   }
 }
