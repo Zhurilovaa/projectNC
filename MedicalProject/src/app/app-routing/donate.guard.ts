@@ -3,6 +3,8 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable, skip, take } from "rxjs";
 import { FondService } from "../server/service/fond.service";
 
+//зфщитник на переход на форму по несуществующему id
+
 @Injectable({
     providedIn: "root",
   })
