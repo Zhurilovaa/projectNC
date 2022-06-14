@@ -5,7 +5,6 @@ export interface ConfigState{
     newsContent: News[],
 }
 
-//const adminDate = new Admin('admin', 'pass');
 
 export const initialConfigState: ConfigState = {
     contactContent: [{

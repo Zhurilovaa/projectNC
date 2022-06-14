@@ -42,7 +42,7 @@ export class ConfigEffects {
         ofType(SAVE_CHANGE_NEWS),
         pluck("changeNewsContent"),
         concatMap(
-            (changeNewsContent: Contacts[]) => {
+            (changeNewsContent: News[]) => {
                 return this.http.put<News[]>(`${this.configServerUrl}/news`, changeNewsContent)
                 .pipe(
                     map( (newNews) =>{

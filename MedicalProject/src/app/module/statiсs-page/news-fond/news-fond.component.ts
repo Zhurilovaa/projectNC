@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, tap } from 'rxjs';
 import { News } from 'src/app/server/Date/config_date';
 import { ConfigService } from 'src/app/server/service/config.service';
@@ -21,17 +21,26 @@ export class NewsFondComponent implements OnInit, DoCheck {
     text: new FormControl(null, [Validators.required,Validators.minLength(1), Validators.pattern('[a-z A-z а-я А-Я ё Ё 0-9 \" \' \(\) \. \,]*')]),
   });
 
-  public edithForm: FormGroup=new FormGroup({
-    newsArray: new FormArray([
-      new FormControl('проверка')
-    ])
+  public edithNewsValid: boolean[] = [];
+
+  /*
+  public edithNewsForm: FormGroup=new FormGroup({
+    "newsText": new FormArray([])
   });
+ */
+  constructor(private cserv: ConfigService, private ref: ChangeDetectorRef) {}
 
-  constructor(private cserv: ConfigService, private ref: ChangeDetectorRef, private fb:FormBuilder) { }
-
-  ngOnInit(): void { 
-    console.log("вход")   
-    this.content$ = this.cserv.getNewsContent();    
+  ngOnInit(): void {  
+    
+    this.content$ = this.cserv.getNewsContent().pipe(
+      tap( (value: News[]) => {
+        this.edithNewsValid = [];
+        for(let i=0; i < value.length; i++){        
+          this.edithNewsValid.push(true);
+        }
+      }
+      )
+    );
   }
 
   ngDoCheck(): void{
@@ -40,6 +49,11 @@ export class NewsFondComponent implements OnInit, DoCheck {
     this.ref.markForCheck();  
   }
 
+  /*
+  getFormsControls(): FormArray{
+    return this.edithNewsForm.controls["newsText"] as FormArray;
+  } 
+ */
   addNewsSubmit(){
     if(this.addNewsForm.valid){
       const dateOfPublic = new Date();
@@ -56,8 +70,30 @@ export class NewsFondComponent implements OnInit, DoCheck {
     }
   }
 
+  getStatusFormsValid():boolean{
+    let status = true;
+    for(let st of this.edithNewsValid){
+      if(!st){
+        status=false;
+      }
+    }
+    return status;
+  }
+  setStatusFormsValid(valid: boolean, id: number ){
+    this.edithNewsValid[id] = valid;    
+  }
+
+  setNew(body: News, content: News[]){
+    body.dateOfPublication = new Date(body.dateOfPublication);
+    let index = content.findIndex((value)=> value.dateOfPublication.getTime()===body.dateOfPublication.getTime())
+    content[index].text = body.text;
+
+    
+  }
+
+  /*
   edithNewsSubmit(){
 
   }
-   
+   */
 }

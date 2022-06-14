@@ -1,12 +1,38 @@
-<div class="newsBlock">
-    <div class="dateBlock">
-        <p class="dateNews">
-            Новости | {{newsCurr.dateOfPublication.toString() | dateNews}}
-        </p>
-    </div>
-    <div class="newsContent">
-        <p class="textNews">
-            {{newsCurr.text}}
-        </p>
-    </div>
+<div class="ngContent">
+    <ng-container *ngIf="adminWork then inputTemplate else valueTemplate"></ng-container>
 </div>
+
+
+
+<!-- Версия при админ панели -->
+<ng-template #inputTemplate>
+    <div class="newsBlock">
+        <form novalidate [formGroup]="edithOrDaleteForm"> 
+            <div class="inputBox">  
+                <div class="dateBlock">                     
+                    <p class="dateNews">
+                        Новости | {{newsCurr.dateOfPublication.toString() | dateNews}}
+                    </p>
+                </div>
+                <textarea class="textValue" rows="7" wrap="soft" formControlName="text" styleValid [valid]="!edithOrDaleteForm.get('text')?.invalid"></textarea>
+            </div> 
+            <button (click)="event()">Сохранить изменения</button>                      
+        </form>                 
+    </div>
+</ng-template>
+
+<!-- Версия при пользовательском режиме -->
+<ng-template #valueTemplate>
+    <div class="newsBlock">
+        <div class="dateBlock">
+            <p class="dateNews">
+                Новости | {{newsCurr.dateOfPublication.toString() | dateNews}}
+            </p>
+        </div>
+        <div class="newsContent">
+            <p class="textNews">
+                {{newsCurr.text}}
+            </p>
+        </div>
+    </div>
+</ng-template>

@@ -22,7 +22,7 @@ export class ContactsFondComponent implements OnInit, DoCheck, ComponentCanDeact
     shortName: new FormControl(null,[Validators.minLength(1),Validators.pattern("[а-я А-Я 0-9 \"]*")]),
     telephone: new FormControl(null, [Validators.minLength(1),Validators.pattern("[0-9 \( \)]*")]),
     fax: new FormControl(null, [Validators.minLength(1),Validators.pattern("[0-9 \( \)]*")] ),
-    email: new FormControl(null, [Validators.minLength(7), Validators.pattern("[a-zA-Z\@\.0-9]*")]),
+    email: new FormControl(null, [Validators.minLength(7), Validators.email]),
     actualAddress: new FormGroup({
       postalCode: new FormControl(null,[Validators.minLength(6),Validators.maxLength(6), Validators.pattern('[0-9]*')]),
       city: new FormControl(null, [Validators.minLength(1),Validators.pattern("[а-я А-Я \.]*")]),
