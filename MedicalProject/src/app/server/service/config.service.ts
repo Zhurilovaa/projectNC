@@ -60,6 +60,14 @@ export class ConfigService{
         return 1;
     }
 
+    edithNewsContent( body: News[]){
+
+        this.http.put<News[]>(`${this.configUrl}/news`, body).subscribe( (newContent) => {
+            this.store.dispatch(new SetNewsContentAction(newContent));
+        })
+        return 1;
+    }
+
 
     //добавление новых новостей
     addNewNews(body: News){
@@ -70,5 +78,13 @@ export class ConfigService{
         return 1;
     }
 
+    //удаление новости по id
+    deleteNewsIdContent(param: string){
+        
+        this.http.delete<News[]>(`${this.configUrl}/${param}`).subscribe( (newContent) => {
+            this.store.dispatch(new SetNewsContentAction(newContent));
+        })
+        return 1;
+    }
  
 }

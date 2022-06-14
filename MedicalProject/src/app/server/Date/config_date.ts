@@ -8,6 +8,7 @@ export interface AdminLogin{
 
 
 export interface News{
+    id: string,
     dateOfPublication: Date,
     text: string,
 }

@@ -38,6 +38,9 @@ export class FondService{
         this.http.get<Child[]>(`${this.childUrl}/${id.toString()}`).subscribe( (childId) =>{
             this.childId = childId;
             return this.store.dispatch(new SetChildIdAction(childId));
+        },
+        (error)=>{
+            console.log(error);
         });
         return this.store.select(selectChildID);
     }

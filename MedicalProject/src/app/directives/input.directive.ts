@@ -54,7 +54,7 @@ export class StyleFormTrDirective{
 export class StyleFormHeadDirective{
 
     @Input() valid: boolean = true;
-    @Input() dirty?: boolean =true;
+    @Input() dirty?: boolean = true;
 
     constructor(private renderer: Renderer2,private el: ElementRef){}
 

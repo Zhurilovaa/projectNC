@@ -6,17 +6,25 @@
 
 <!-- Версия при админ панели -->
 <ng-template #inputTemplate>
-    <div class="newsBlock">
-        <form novalidate [formGroup]="edithOrDaleteForm"> 
+    <div class="newsBlock"  styleFormTR [valid]="!edithOrDeleteForm.get('text')?.invalid" [dirty]="edithOrDeleteForm.get('text')?.dirty" >
+        <form novalidate [formGroup]="edithOrDeleteForm"> 
+            <div class="deleteBlock">
+                <button class="deleteFormBtn" (click)="eventDelete()" title="Нажмите, что бы удалить эту новость" >x</button>
+            </div>
             <div class="inputBox">  
                 <div class="dateBlock">                     
-                    <p class="dateNews">
+                    <p class="dateNews" styleFormHead [valid]="!edithOrDeleteForm.get('text')?.invalid" [dirty]="edithOrDeleteForm.get('text')?.dirty">
                         Новости | {{newsCurr.dateOfPublication.toString() | dateNews}}
                     </p>
                 </div>
-                <textarea class="textValue" rows="7" wrap="soft" formControlName="text" styleValid [valid]="!edithOrDaleteForm.get('text')?.invalid"></textarea>
+                <textarea class="textValue" rows="7" wrap="soft" formControlName="text" styleValid [valid]="!edithOrDeleteForm.get('text')?.invalid"></textarea>
+                <p class="error" *ngIf="edithOrDeleteForm.get('text')?.dirty && edithOrDeleteForm.get('text')?.invalid">
+                    Содержание новости не должно быть пустым
+                </p>
             </div> 
-            <button (click)="event()">Сохранить изменения</button>                      
+            <div class="edithBlock">            
+                <button  [ngClass]="{btnForm:true, disabled: (edithOrDeleteForm.invalid || !edithOrDeleteForm.dirty) }" (click)="eventEdith()" [disabled]="(edithOrDeleteForm.invalid || !edithOrDeleteForm.dirty) " title="Нажмите, чтобы сохранить изменения новости">Сохранить изменения</button>
+            </div>                    
         </form>                 
     </div>
 </ng-template>

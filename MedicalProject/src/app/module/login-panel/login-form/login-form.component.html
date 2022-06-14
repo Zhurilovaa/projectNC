@@ -21,7 +21,7 @@
                         class="error">Нарушены правила ввода логина!
                     </p>
                     <div class="inputDonateForm">
-                        <input  type="text" formControlName="adminPass" class="inputDonate" placeholder="password">
+                        <input  type="password" formControlName="adminPass" class="inputDonate" placeholder="password">
                     </div>
         
                     <p *ngIf="loginForm.get('adminPass')?.dirty && loginForm.get('adminPass')?.invalid"

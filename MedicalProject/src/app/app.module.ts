@@ -22,10 +22,10 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/state/app.state';
 import { handleLog } from './store/reducers/logger';
 import { EffectsModule } from '@ngrx/effects';
-import { FondEffects } from './store/effects/fond.effects';
 import { Store } from '@ngrx/store';
 import { ConfigEffects } from './store/effects/config.effects';
-import { LoginOutGuard } from './app-routing/login.guard';
+import { ConfigOutGuard } from './app-routing/config.guard';
+import { DonateInGuard } from './app-routing/donate.guard';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,8 @@ import { LoginOutGuard } from './app-routing/login.guard';
     AppRoutingModule,  //маршуртизация
   ],
   providers: [
-    LoginOutGuard,
+    ConfigOutGuard,
+    DonateInGuard,
     {
       provide: ConfigService,
       deps: [HttpClient, Store]

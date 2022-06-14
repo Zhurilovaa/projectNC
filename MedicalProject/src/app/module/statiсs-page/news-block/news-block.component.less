@@ -7,43 +7,133 @@
     padding: 3px;
     padding-top: 20px;
     padding-bottom: 20px;
-
-    //border-bottom: 1px solid @color_grey;
     
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: stretch;
 
     &:hover{
         background: @color_back_green;        
     }
-
     .dateBlock{
+        padding-bottom: 15px;
         .dateNews{
             font-family: 'Arimo', sans-serif;
             font-size: 1em;
             font-weight: 600;
             color: @color_lavender_hover;
         }
+        .errorHead{
+            color:@color_error_input;
+            text-shadow: 2px 4px 3px @color_error_back;
+        }
     }
-    .textValue{
-        width:65vw;
-        //height: 70px;
-        margin: 20px 10px;
-        margin-top: 0px;
-        padding: 10px 15px;
 
-        font-size: 1.1em;
-        font-family: 'Arimo', sans-serif;
+    .deleteBlock{
+        width: 100%;
+
+        display: flex;
+        justify-content: flex-end;
+
+        .deleteFormBtn{
+            padding: 5px 10px;
+            margin-right: 25px;
+
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.3em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            
+            background: @color_lavender_text;
+            color: @color_lavender_hover;
+            border-radius: 10px;
+
+            transition: .3s linear;
+
+            box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, .2);
+
+            &:hover{
+                background: @color_lavender_hover;
+                color: @color_white;
+            }
+
+        }
     }
-    .valid{
-        border: 1px solid @color_green;
+
+    .inputBox{
+        padding: 10px;
+        
+        .textValue{
+            width:70%;
+            margin: 20px 10px;
+            margin-top: 0px;
+            padding: 10px 15px;
+    
+            font-size: 1.1em;
+            font-family: 'Arimo', sans-serif;
+
+            border-radius: 10px;
+        }
+        .valid{
+            border: 1px solid @color_green;
+        }
+        .invalid{
+            border: 1px solid @color_error_input;
+            background: @color_error_back;
+        }
+        .error{
+            width:100%;
+            padding: 10px;
+            margin: 5px;
+            padding-bottom: 25px;
+
+            color: @color_error_input;
+            font-family: 'Arimo', sans-serif;
+            font-size: 1em;
+            font-weight: bold;
+
+            text-align: left;
+
+        }
     }
-    .invalid{
-        border: 1px solid @color_error_input;
-        background: @color_error_back;
+    
+    .edithBlock{
+        .btnForm{
+            margin: 10px;
+            padding: 15px 10px;
+
+            margin-bottom: 50px;
+
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.1em;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            background: @color_green;
+            color: @color_text_grey;
+            border-radius: 10px;
+
+            transition: .3s linear;
+
+            box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, .2);
+
+            &:hover{
+                background: @color_lavender_text;
+                color: @color_lavender_hover;
+            }
+
+        }
+        .disabled{
+            cursor:not-allowed;  
+            background-color: @color_grey;
+            color: @color_text_grey;    
+            &:hover{
+                background-color: @color_history;
+                color: white;
+            }  
+        }
     }
     .newsContent{
         padding:3px;
@@ -58,5 +148,23 @@
             text-indent: 25px; 
             line-height: 1.5;
         }
+    }
+}
+.inside{
+    &:hover{
+        background: @color_back_green;
+        color: @color_lavender_hover;
+        .thContent{
+            color:@color_lavender_hover;
+        }
+    }
+}
+.errorTR{
+    background: @color_back_yellow;                    
+    &:hover{
+        background: @color_back_yellow;
+    }
+    .thContent{
+        color:@color_error_input;
     }
 }

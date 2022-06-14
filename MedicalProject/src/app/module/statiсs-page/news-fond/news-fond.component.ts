@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, tap } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { ComponentCanDeactivate } from 'src/app/app-routing/config.guard';
 import { News } from 'src/app/server/Date/config_date';
 import { ConfigService } from 'src/app/server/service/config.service';
 
@@ -11,55 +12,41 @@ import { ConfigService } from 'src/app/server/service/config.service';
   styleUrls: ['./news-fond.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NewsFondComponent implements OnInit, DoCheck {
+export class NewsFondComponent implements OnInit, DoCheck, ComponentCanDeactivate {
 
   public adminWork: boolean;
 
   public content$!: Observable<News[]>;
 
   public addNewsForm: FormGroup = new FormGroup({
-    text: new FormControl(null, [Validators.required,Validators.minLength(1), Validators.pattern('[a-z A-z а-я А-Я ё Ё 0-9 \" \' \(\) \. \,]*')]),
+    text: new FormControl(null, [Validators.required]),
   });
 
-  public edithNewsValid: boolean[] = [];
+  public statusFormsBlock: boolean[] = [];
 
-  /*
-  public edithNewsForm: FormGroup=new FormGroup({
-    "newsText": new FormArray([])
-  });
- */
   constructor(private cserv: ConfigService, private ref: ChangeDetectorRef) {}
 
-  ngOnInit(): void {  
-    
-    this.content$ = this.cserv.getNewsContent().pipe(
-      tap( (value: News[]) => {
-        this.edithNewsValid = [];
-        for(let i=0; i < value.length; i++){        
-          this.edithNewsValid.push(true);
-        }
-      }
-      )
-    );
+  ngOnInit(): void {      
+    this.content$ = this.cserv.getNewsContent();
   }
 
   ngDoCheck(): void{
     this.adminWork = !!sessionStorage.getItem('admin'); 
     //по другому пока не перерисовывается компонент 
-    this.ref.markForCheck();  
+    this.ref.markForCheck(); 
   }
 
-  /*
-  getFormsControls(): FormArray{
-    return this.edithNewsForm.controls["newsText"] as FormArray;
-  } 
- */
+  setStatus(st: boolean, index: number){
+    this.statusFormsBlock[index] = st;
+  }
+
   addNewsSubmit(){
     if(this.addNewsForm.valid){
       const dateOfPublic = new Date();
       const textPublic = this.addNewsForm.value.text;
 
       const newNews: News = {
+        id: '0',
         dateOfPublication: dateOfPublic,
         text: textPublic,
       }
@@ -70,30 +57,28 @@ export class NewsFondComponent implements OnInit, DoCheck {
     }
   }
 
-  getStatusFormsValid():boolean{
-    let status = true;
-    for(let st of this.edithNewsValid){
-      if(!st){
-        status=false;
-      }
-    }
-    return status;
-  }
-  setStatusFormsValid(valid: boolean, id: number ){
-    this.edithNewsValid[id] = valid;    
-  }
-
   setNew(body: News, content: News[]){
-    body.dateOfPublication = new Date(body.dateOfPublication);
-    let index = content.findIndex((value)=> value.dateOfPublication.getTime()===body.dateOfPublication.getTime())
-    content[index].text = body.text;
-
-    
+    const index: number = content.findIndex((value)=> value.id === body.id)
+    let edithNewsArray: News[] =[];
+    for(let i=0; i<content.length; i++){
+      if(i===index){
+        edithNewsArray.push(body);
+      }
+      else edithNewsArray.push(content[i]);
+    }
+    this.cserv.edithNewsContent(edithNewsArray);
   }
 
-  /*
-  edithNewsSubmit(){
-
+  deleteNewsById(idDelete: string){
+    this.cserv.deleteNewsIdContent(idDelete);
   }
-   */
+
+  canDeactivate(): boolean | Observable<boolean> {
+    const statusEdith = this.statusFormsBlock.includes(true);
+    if(this.addNewsForm.dirty || statusEdith)
+    {
+      return confirm("Остались несохранённые изменения!\nВы хотите покинуть страницу, не сохранив их?");
+    }
+    else return true;
+  }
 }

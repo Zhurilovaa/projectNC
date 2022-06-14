@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ComponentCanDeactivate } from 'src/app/app-routing/login.guard';
+import { ComponentCanDeactivate } from 'src/app/app-routing/config.guard';
 import { Observable, tap } from 'rxjs';
 import { Contacts } from 'src/app/server/Date/config_date';
 import { ConfigService } from 'src/app/server/service/config.service';
@@ -18,29 +18,29 @@ export class ContactsFondComponent implements OnInit, DoCheck, ComponentCanDeact
   public content$!: Observable<Contacts[]>; 
 
   public formEdith: FormGroup = new FormGroup({
-    nameOfTheOrganization: new FormControl(null, [Validators.minLength(1),Validators.pattern("[а-я А-Я 0-9 \"]*")]),
-    shortName: new FormControl(null,[Validators.minLength(1),Validators.pattern("[а-я А-Я 0-9 \"]*")]),
-    telephone: new FormControl(null, [Validators.minLength(1),Validators.pattern("[0-9 \( \)]*")]),
-    fax: new FormControl(null, [Validators.minLength(1),Validators.pattern("[0-9 \( \)]*")] ),
+    nameOfTheOrganization: new FormControl(null, [Validators.required,Validators.pattern("[а-я А-Я 0-9 \"]*")]),
+    shortName: new FormControl(null,[Validators.required,Validators.pattern("[а-я А-Я 0-9 \"]*")]),
+    telephone: new FormControl(null, [Validators.required,Validators.pattern("[0-9 \( \)]*")]),
+    fax: new FormControl(null, [Validators.required,Validators.pattern("[0-9 \( \)]*")] ),
     email: new FormControl(null, [Validators.minLength(7), Validators.email]),
     actualAddress: new FormGroup({
       postalCode: new FormControl(null,[Validators.minLength(6),Validators.maxLength(6), Validators.pattern('[0-9]*')]),
-      city: new FormControl(null, [Validators.minLength(1),Validators.pattern("[а-я А-Я \.]*")]),
+      city: new FormControl(null, [Validators.required,Validators.pattern("[а-я А-Я \.]*")]),
       street: new FormControl(null, [Validators.pattern("[а-я А-Я \.]*")]),
-      build: new FormControl(null,[Validators.minLength(1),Validators.pattern('[0-9]*')]),
-      office:  new FormControl(null,[Validators.minLength(1),Validators.pattern('[0-9]*')]),
+      build: new FormControl(null,[Validators.required,Validators.pattern('[0-9]*')]),
+      office:  new FormControl(null,[Validators.required,Validators.pattern('[0-9]*')]),
     }),
     requisites: new FormGroup({
       ogrn: new FormControl(null,[Validators.minLength(13),Validators.maxLength(13), Validators.pattern('[0-9]*')]),
-      name: new FormControl(null,[Validators.minLength(1),Validators.pattern("[а-я А-Я 0-9 \']*")]),
+      name: new FormControl(null,[Validators.required,Validators.pattern("[а-я А-Я 0-9 \']*")]),
       inn: new FormControl(null,[Validators.minLength(10),Validators.maxLength(10), Validators.pattern('[0-9]*')]),
       kpp: new FormControl(null,[Validators.minLength(9),Validators.maxLength(9), Validators.pattern('[0-9]*')]),
     }),    
     businessAddress: new FormGroup({
       postalCode: new FormControl(null,[Validators.minLength(6),Validators.maxLength(6), Validators.pattern('[0-9]*')]),
-      city: new FormControl(null, [Validators.minLength(1),Validators.pattern("[а-я А-Я \.]*")]),
-      street: new FormControl(null, [Validators.minLength(1),Validators.pattern("[а-я А-Я \.]*")]),
-      build: new FormControl(null,[Validators.minLength(1),Validators.pattern('[0-9]*')]),
+      city: new FormControl(null, [Validators.required,Validators.pattern("[а-я А-Я \.]*")]),
+      street: new FormControl(null, [Validators.required,Validators.pattern("[а-я А-Я \.]*")]),
+      build: new FormControl(null,[Validators.required,Validators.pattern('[0-9]*')]),
     }),
   });
 
@@ -147,7 +147,7 @@ export class ContactsFondComponent implements OnInit, DoCheck, ComponentCanDeact
   canDeactivate(): boolean | Observable<boolean> {
     if(this.formEdith.dirty)
     {
-      return confirm("Вы хотите покинуть страницу?");
+      return confirm("Остались несохранённые изменения!\nВы хотите покинуть страницу, не сохранив их?");
     }
     else return true;
   }

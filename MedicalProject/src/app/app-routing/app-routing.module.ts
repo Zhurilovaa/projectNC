@@ -12,7 +12,8 @@ import { AboutFoundComponent } from '../module/statiсs-page/about-found/about-f
 import { ContactsFondComponent } from '../module/statiсs-page/contacts-fond/contacts-fond.component';
 import { NewsFondComponent } from '../module/statiсs-page/news-fond/news-fond.component';
 
-import { LoginOutGuard } from './login.guard';
+import { ConfigOutGuard } from './config.guard';
+import { DonateInGuard } from './donate.guard';
 
 //import { GetHelpFondComponent } from '../module/statiсs-page/get-help-fond/get-help-fond.component';
 //import { PartnersFondComponent } from '../module/statiсs-page/partners-fond/partners-fond.component';
@@ -31,7 +32,7 @@ const routes: Routes = [
   {
     path: 'news',
     component: NewsFondComponent,
-    //нужен защитник на уход
+    canDeactivate: [ConfigOutGuard],
   },
   {
     path: 'children',
@@ -44,11 +45,12 @@ const routes: Routes = [
   {
     path: 'contacts',
     component: ContactsFondComponent,
-    canDeactivate: [LoginOutGuard],
+    canDeactivate: [ConfigOutGuard],
   },
   {
     path: 'donateHelp/:id',
     component: FormDonateComponent,
+    canActivate: [DonateInGuard],
     //нужен защитник на переход!
   },
   {

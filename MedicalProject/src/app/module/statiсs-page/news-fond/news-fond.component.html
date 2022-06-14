@@ -31,27 +31,12 @@
             </form>
         </div>
         <div class="addOrEdithNews">
-            <p class="headForm"styleFormHead [valid]="getStatusFormsValid()">
+            <p class="headForm">
                 Редактировать новости:
             </p>
             <div *ngFor="let news of (content$|async) as content; let i=index">
-                <app-news-block  [newsCurr]="news" [adminWork]="adminWork" (edithValid)="setStatusFormsValid($event, i)" (edithNews)="setNew($event, content)"></app-news-block>
-                <p>{{edithNewsValid[i]}}</p>
-            </div>
-            <!-- <form novalidate [formGroup]="edithNewsForm" (ngSubmit)="edithNewsSubmit()"> 
-                
-                <div class="inputBoxArray" formArrayName="newsText">
-                    <div *ngFor="let newsCurr of content$|async; let j=index">
-                        <div class="inputBox" *ngFor="let text of getFormsControls()['controls']; let i=index" styleFormTR [valid]="text.invalid">                       
-                            <p class="dateNews" *ngIf="j===i">
-                                Новости | {{newsCurr.dateOfPublication.toString() | dateNews}}
-                            </p>
-                            <textarea *ngIf="j===i" class="textValue" rows="7" wrap="soft" formControlName="{{i}}"></textarea>
-                        </div>                        
-                    </div>
-                </div>
-            </form>  
-        -->          
+                <app-news-block  [newsCurr]="news" [adminWork]="adminWork" (statusForm)="setStatus($event, i)" (edithNews)="setNew($event, content)" (deleteIdNews)="deleteNewsById($event)"></app-news-block>
+            </div>        
         </div>
     </div>    
 </ng-template>
