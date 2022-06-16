@@ -1,0 +1,51 @@
+
+
+<div class="main">
+    <p class="heading">
+        Новости
+    </p>
+
+    <div class="ngContent">
+        <ng-container *ngIf="adminWork then inputTemplate else valueTemplate"></ng-container>
+    </div>
+
+</div>
+
+<!-- Версия при админ панели -->
+<ng-template #inputTemplate>
+    <div class="newsContent admin">
+        <div class="addOrEdithNews">
+            <form novalidate [formGroup]="addNewsForm" (ngSubmit)="addNewsSubmit()">
+                <p class="headForm"  styleFormHead [valid]="!addNewsForm.get('text')?.invalid" [dirty]="addNewsForm.get('text')?.dirty">
+                    Добавить новость:
+                </p>
+                <div class="inputBox" styleFormTR [valid]="!addNewsForm.get('text')?.invalid" [dirty]="addNewsForm.get('text')?.dirty">
+                    <textarea formControlName="text" class="textValue"  rows="5" wrap="soft" styleValid [valid]="!addNewsForm.get('text')?.invalid" [dirty]="addNewsForm.get('text')?.dirty"></textarea>
+                    <p class="error" *ngIf="addNewsForm.get('text')?.dirty && addNewsForm.get('text')?.invalid">
+                        В тексте сообщения присутсвуют недопустимые символы
+                    </p>
+                </div>
+                <div class="submitBlock">              
+                    <button  [ngClass]="{submitBtn:true, disabled: addNewsForm.invalid}"  type="submit" (submit)="addNewsSubmit()" [disabled]="addNewsForm.invalid" title="Нажмите, чтобы добавить новость">Добавить</button>
+                </div>
+            </form>
+        </div>
+        <div class="addOrEdithNews">
+            <p class="headForm">
+                Редактировать новости:
+            </p>
+            <div *ngFor="let news of (content$|async) as content; let i=index">
+                <app-news-block  [newsCurr]="news" [adminWork]="adminWork" (statusForm)="setStatus($event, i)" (edithNews)="setNew($event, content)" (deleteIdNews)="deleteNewsById($event)"></app-news-block>
+            </div>        
+        </div>
+    </div>    
+</ng-template>
+
+<!-- Версия при пользовательском режиме -->
+<ng-template #valueTemplate>
+    <div class="newsContent"> 
+        <div *ngFor="let news of content$|async">
+            <app-news-block [newsCurr]="news"  [adminWork]="adminWork"></app-news-block>
+        </div>
+    </div>
+</ng-template>

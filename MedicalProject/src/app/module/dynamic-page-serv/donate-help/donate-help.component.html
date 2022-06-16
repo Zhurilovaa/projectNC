@@ -1,0 +1,70 @@
+<!-- <p>donate-help works!</p> -->
+<div class="main">
+
+    <div class="linkDonate">
+        
+        <div class="getHelpPhrase">
+            <p class="Phrase">
+                Вы можете внести пожертвование прямо сейчас!
+            </p>
+        </div>
+
+        <div class="buttonForHelp">
+            <button class="help_button" (click)="setOpenPopUpChoice()" >Помочь</button>
+        </div>
+
+    </div>
+</div>
+
+<div class="popup_bg" *ngIf="( getPopUpChoise()=== true)">
+    <div class="popup">
+        <div class="exit">
+            <button class="btn_close" (click)="setExitPopUpChoise()">x</button>
+        </div>
+        <div class="setParam">        
+            <label class="findParam">
+                <input placeholder="Фамилия" type="text" class="inputParam" [(ngModel)]="SNP[0]">
+            </label>
+                
+            <label  class="findParam">
+                <input placeholder="Имя" type="text"  class="inputParam" [(ngModel)]="SNP[1]">
+            </label>
+                
+            <label  class="findParam">
+                <input placeholder="Отчество" type="text"  class="inputParam" [(ngModel)]="SNP[2]">
+            </label>
+        </div>
+        <div class="childList">            
+            <table>
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Дата рождения</th>
+                    <th>Сколько нехватает до <b>спасения!</b></th>
+                    <th>...</th>
+                </tr>
+                <tr *ngFor="let ch of childList$ |async">
+                    <td *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd" [routerLink]="['/donateHelp',ch.id]" > {{ch.surname}} </td>
+                    <td *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd" [routerLink]="['/donateHelp',ch.id]" > {{ch.name}} </td>
+                    <td *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd" [routerLink]="['/donateHelp',ch.id]" > {{ch.patronym}} </td>
+                    <td *ngIf="(allIsClear() || foundMatch(ch))" class="childListTd" [routerLink]="['/donateHelp',ch.id]" > {{ch.birthDate | date :'dd/MM/yyyy' }} </td>  
+                    <td *ngIf="(allIsClear() || foundMatch(ch))&&(ch.needSum-ch.donatSum)>0" [routerLink]="['/donateHelp',ch.id]"> {{ch.needSum-ch.donatSum}} руб.</td>   
+                    <td *ngIf="(allIsClear() || foundMatch(ch))&&(ch.needSum-ch.donatSum)<=0" [routerLink]="['/donateHelp',ch.id]"> Необходимая сумма уже собрана!</td> 
+                    <td *ngIf="(allIsClear() || foundMatch(ch))" (click)="setOpenPopUpHistory(ch)"> <p class="history">узнать историю...</p> </td>      
+                </tr>
+            </table>  
+        </div>
+    </div>
+</div>
+
+<div class="popup_bg" *ngIf="( getPopUpHistory()=== true)">
+    <div class="popup historyPopUp">
+        <div class="exit">
+            <button class="btn_close" (click)="setExitPopUpHistory()">x</button>
+        </div>
+        <div class="historyChild">
+            <dynamic-child  [childCurr]="childHistory"></dynamic-child>
+        </div>
+    </div>
+</div>

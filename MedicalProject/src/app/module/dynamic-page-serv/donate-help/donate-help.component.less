@@ -1,0 +1,263 @@
+@import "/src/styles.less";
+@import url('https://fonts.googleapis.com/css?family=Arimo'); 
+
+
+.text(){
+    font-family: 'Arimo', sans-serif;     
+    font-weight: bold;
+    color: @color_text_grey;
+   
+}
+
+@keyframes glowing {
+    0% { background-color: @color_orange; box-shadow: 0 0 1.5px @color_orange; }
+    50% { background-color: @color_glowing_btn; box-shadow: 0 0 5px @color_glowing_btn; }
+    100% { background-color: @color_orange; box-shadow: 0 0 1.5px @color_orange; }
+}
+
+.main{
+    width: 90vw;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    .linkDonate{
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+
+        padding: 20px;
+
+        background: #ccc;
+        box-shadow: 0 0 0 1px #ccc,
+                        0 -2px 15px -5px @color_green,
+                        2px 0 15px -5px @color_green,
+                        0 2px 15px -5px @color_green,
+                        -2px 0 15px -5px @color_green;
+        &:hover{
+            box-shadow: 0 0 0 1px #ccc,
+                        0 -2px 15px -5px @color_lavender,
+                        2px 0 15px -5px @color_lavender,
+                        0 2px 15px -5px @color_lavender,
+                        -2px 0 15px -5px @color_lavender;
+
+        }
+
+        .getHelpPhrase{
+            .Phrase{
+                font-size: 1.8em;
+                font-family: 'Arimo', sans-serif;
+                font-weight: bold;
+                color: @color_orange;
+
+            }
+        }
+
+        .buttonForHelp{
+            background: @color_orange;
+            border-radius: 10px;
+
+            width: 25%;
+            //height:70%;
+            .help_button{
+                background: @color_orange;
+                border-radius: 10px;
+                color: @color_white;
+
+                padding:10px;
+                cursor: pointer;
+                
+                font-size: 1.5em;
+                font-family: 'Arimo', sans-serif;
+                font-weight: bold;
+                width: 100%;
+                height:100%;
+                transition: .3s linear;
+
+                box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .2);
+                &:hover{
+                    background: rgba(0,0,0,.3);
+                    color:@color_white;
+                    font-size: 1.6em;
+                    animation:none;
+                }
+                
+                animation: glowing 1300ms infinite;
+
+            }
+        }
+    }
+}
+
+.popup_bg{
+    position: fixed; //фиксируем относительно окна браузера
+    top: 0;
+    left: 0;
+    //во весь экран
+    width: 100%;
+    height: 100vh;
+    //размытие фона   
+    background: rgba(0,0,0,0.5);  
+    transition: 0.5s all;
+
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .popup{
+        margin: 10%;
+
+        border: 1px solid transparent;
+        border-radius: 10px;
+        border-color:@color_glowing_btn;
+
+        background: @color_white;
+        width: 60%;
+        padding: 10px;
+        transition: 0.5s all; 
+
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+
+        .exit{
+            width:100%;
+            //height: 10%;
+            display:flex;
+            flex-direction: row-reverse;
+            margin: 3px;
+
+            .btn_close {
+                cursor: pointer;
+                width: 3%;
+                aspect-ratio: 1 / 1;
+                border: 0px;
+                background-color: @color_grey;
+                text-transform: uppercase;
+                transition: 0.5s all;
+                .text;
+                color: @color_white;
+                font-size: 1.0em;
+                padding: 3px;
+                &:hover{
+                    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .2);
+                    background-color: @color_glowing_btn;
+                }
+            } 
+        }
+        .setParam{
+            width: 100%;
+            margin: 3px;
+            display:flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+            .findParam {
+                width:30%;                
+                min-width: 150px;
+                .inputParam {
+                    height: 25px;
+                    width:100%;
+                    padding:4px;
+                    .text;
+                    font-weight: lighter;
+                    font-size: 1.0em;
+                    border: 1px solid @color_glowing_btn;
+                    border-radius: 5px;
+                    outline: none;
+                
+                    &:focus {
+                        background: @color_input_hover;
+                    }
+                }
+            }
+        }
+        
+        .childList {
+            width: 100%;
+            height: 60vh;
+            margin: 10px;
+            .text;
+            display: flex;
+            flex-direction: column;
+
+            overflow: auto; 
+            .childListTR{
+                margin-left: 5px;
+                margin-right: 5px;
+                display: flex;
+                flex-direction: row;
+                //justify-content: space-between;
+                font-size: 1.2em;
+                font-weight: normal;
+
+                .childListTd{
+                    max-width:15%;
+                    padding: 5px;
+                }
+                &:hover{
+                    background-color: @color_input_hover;
+                    cursor:pointer;
+                }
+            }
+
+            table{
+                width: 100%;
+                //border: 1px solid black;
+                border-collapse: collapse;
+                
+                tr{ 
+                    th{
+                        //border: 1px solid black;
+                        background: @color_white;
+                        color: @color_glowing_btn;
+                        padding: 10px 2px;
+                        text-align: left;                        
+                    } 
+                    &:hover{
+                        background-color: @color_input_hover;
+                        cursor:pointer;
+                    }                  
+                    td{
+                        .text;
+                        padding: 10px 2px;
+                        text-align: left;
+                        border: 0px;
+                        
+                    }
+                }
+            }
+            .history{
+                text-decoration: underline @color_grey ;
+                color: @color_history;
+            }
+        }         
+    } 
+     
+    .historyPopUp{
+        width: 70%;
+        margin: 10%;
+        margin-top: 5%;
+        height: 80vh;
+        .historyChild{
+            display:flex;
+            flex-direction: row;
+            justify-content:center;
+            align-items: stretch;
+            
+            width: 100%;
+            height: 90%; 
+            dynamic-child{
+                width:95%;
+            }
+        }
+    }    
+}

@@ -1,0 +1,112 @@
+@import "/src/styles.less";
+@import url('https://fonts.googleapis.com/css?family=Arimo');  
+.content{
+    position: relative; 
+    height: 100%;
+}
+.main_page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .help_main{
+        width: 80%;
+        //height: 45%;        
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background: linear-gradient(@color_white, @color_lavender);  
+
+        .help_main__info{
+            width: 60%;
+            padding: 5%;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-around;
+            .heading{                
+                font-size: 170%;
+                transition-duration: 0.5s; 
+                letter-spacing: 2px;
+                font-family: 'Arimo', sans-serif;
+                font-weight: bold;
+                color: @color_text_green;
+                &:hover{
+                    font-size: 190%;
+                    transition-duration: 0.5s;                    
+                }
+            }
+
+            .button{
+                align-self: center;
+                background: @color_orange;
+                border-radius: 10px;
+                width: 30%;
+                height:20%;
+                .help_button{
+                    background: @color_orange;
+                    border-radius: 10px;
+                    color: @color_white;
+                    
+                    font-size: 150%;
+                    font-family: 'Arimo', sans-serif;
+                    font-weight: bold;
+                    width: 100%;
+                    height:100%;
+                    transition: .3s linear;
+
+                    box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .2);
+                    &:hover{
+                        background: rgba(0,0,0,.3);
+                        color:@color_white;
+                        font-size: 160%;
+                    }
+                }
+            }
+
+            .text{
+                font-size: 140%;
+                letter-spacing: 2px;
+                font-family: 'Arimo', sans-serif;
+                font-weight: bold;
+                color: @color_text_grey;                
+            }
+        }
+
+        .help_main_img{
+            width: 40%;
+            img{
+               width:100%; 
+               min-width: 245px;
+            }
+        }    
+    }
+    .infoFond{
+        width: 80%;
+        //height: 45%;        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(@color_white, @color_lavender, @color_white,); 
+        padding: 2%;
+        .text{
+            width:50%;
+            line-height: 150%;
+            font-size: 110%;
+            letter-spacing: 2px;
+            text-align: center;
+            font-family: 'Arimo', sans-serif;
+            font-weight: bold;
+            color: @color_text_grey; 
+        } 
+        .infoVideo{
+            width:50%;
+        }
+    }
+}
+
+.panel{
+    margin: 0 auto;
+    padding: 50px;
+}

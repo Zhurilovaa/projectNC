@@ -1,0 +1,211 @@
+<div class="main">
+    <p class="heading">Контакты</p>
+    <div class="ngContent">
+        <ng-container *ngIf="adminWork then inputTemplate else valueTemplate"></ng-container>
+    </div>    
+</div>
+
+<!-- Версия при админ панели -->
+<ng-template #inputTemplate>
+    <div class="content"> 
+
+        <form novalidate [formGroup]="formEdith" (ngSubmit)="submit()"> 
+
+            <table *ngFor="let con of content$|async" class="contactContent">
+                <tr class="trContent inside">
+                    <th class="thContent" styleFormTR [valid]="!formEdith.get('nameOfTheOrganization')?.invalid">Название:</th>
+                    <td class="tdContent" styleFormTR [valid]="!formEdith.get('nameOfTheOrganization')?.invalid">
+                        <textarea formControlName="nameOfTheOrganization" class="textValue" rows="5" wrap="soft" styleValid [valid]="!formEdith.get('nameOfTheOrganization')?.invalid"></textarea>
+                        <p class="error" *ngIf="formEdith.get('nameOfTheOrganization')?.dirty && formEdith.get('nameOfTheOrganization')?.invalid">
+                            Указанное название недопустимо, попробуйте что-то другое
+                        </p>
+                    </td>
+                </tr>
+                <tr class="trContent inside">
+                    <th class="thContent" styleFormTR [valid]="!formEdith.get('shortName')?.invalid">Короткое название:</th>
+                    <td class="tdContent" styleFormTR [valid]="!formEdith.get('shortName')?.invalid">
+                        <textarea formControlName="shortName" class="textValue" rows="2" wrap="soft"  styleValid [valid]="!formEdith.get('shortName')?.invalid"></textarea>
+                        <p class="error" *ngIf="formEdith.get('shortName')?.dirty && formEdith.get('shortName')?.invalid">
+                            Указанное название недопустимо, попробуйте что-то другое
+                        </p>
+                    </td>
+                </tr>
+            <tr class="trContent">
+                <th class="thContent">Как с нами связаться:</th>
+                <td class="tdContentBack">
+                    <tr class="trContent inside">
+                        <th class="thContent" styleFormTR [valid]="!formEdith.get('telephone')?.invalid" >Телефон:</th>
+                        <td class="tdContent" styleFormTR [valid]="!formEdith.get('telephone')?.invalid">
+                            <input type="tel" formControlName="telephone" class="inputValue underLine" styleValid [valid]="!formEdith.get('telephone')?.invalid">
+                            <p class="error" *ngIf="formEdith.get('telephone')?.dirty && formEdith.get('telephone')?.invalid">
+                                Допущена ошибка в введении номера телефона
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="trContent inside">
+                        <th class="thContent" styleFormTR [valid]="!formEdith.get('fax')?.invalid" >Факс:</th>
+                        <td class="tdContent"styleFormTR [valid]="!formEdith.get('fax')?.invalid">
+                            <input type="tel" formControlName="fax" class="inputValue underLine" styleValid [valid]="!formEdith.get('fax')?.invalid">
+                            <p class="error" *ngIf="formEdith.get('fax')?.dirty && formEdith.get('fax')?.invalid">
+                                Допущена ошибка в введении номера
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="trContent inside">
+                        <th class="thContent" styleFormTR [valid]="!formEdith.get('email')?.invalid">email:</th>
+                        <td class="tdContent" styleFormTR [valid]="!formEdith.get('email')?.invalid">
+                            <input type="email" formControlName="email" class="inputValue underLine" styleValid [valid]="!formEdith.get('email')?.invalid">
+                            <p class="error" *ngIf="formEdith.get('email')?.dirty && formEdith.get('email')?.invalid">
+                                Допущена ошибка в введении фдреса электронной почты
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="trContent inside">
+                        <th class="thContent" styleFormTR [valid]="!formEdith.get('actualAddress')?.invalid">Физический адрес:</th>
+                        <td class="tdContent" styleFormTR [valid]="!formEdith.get('actualAddress')?.invalid">
+                            <div class="inputAddress" formGroupName="actualAddress">
+                                <input formControlName="postalCode" class="inputValue" styleValid [valid]="!formEdith.get('actualAddress.postalCode')?.invalid" placeholder="почтовый индекс">
+                                
+                                <input formControlName="city" class="inputValue" styleValid [valid]="!formEdith.get('actualAddress.city')?.invalid" placeholder="город">
+                                
+                                <input formControlName="street" class="inputValue" styleValid [valid]="!formEdith.get('actualAddress.street')?.invalid" placeholder="улица">
+                                
+                                <input formControlName="build" class="inputValue" styleValid [valid]="!formEdith.get('actualAddress.build')?.invalid" placeholder="дом">
+                                
+                                <input formControlName="office" class="inputValue" styleValid [valid]="!formEdith.get('actualAddress.office')?.invalid" placeholder="помещение">                                
+                            </div>
+                            <p class="error" *ngIf="formEdith.get('actualAddress')?.dirty && formEdith.get('actualAddress')?.invalid">
+                                Допущена ошибка при введении адреса
+                            </p>
+                        </td>
+                    </tr>
+                </td>
+            </tr>
+            <tr class="trContent">
+                <th class="thContent">Реквизиты:</th>
+                <td class="tdContentBack">
+                    <div formGroupName="requisites">
+                        <tr class="trContent inside">
+                            <th class="thContent" styleFormTR [valid]="!formEdith.get('requisites.ogrn')?.invalid">ОГРН:</th>
+                            <td class="tdContent" styleFormTR [valid]="!formEdith.get('requisites.ogrn')?.invalid">
+                                <input formControlName="ogrn" class="inputValue" styleValid [valid]="!formEdith.get('requisites.ogrn')?.invalid">
+                                <p class="error" *ngIf="formEdith.get('requisites.ogrn')?.dirty && formEdith.get('requisites.ogrn')?.invalid">
+                                    ОГРН введён неверно
+                                </p>
+                            </td>
+                        </tr>
+                        <tr class="trContent inside">
+                            <th class="thContent" styleFormTR [valid]="!formEdith.get('requisites.name')?.invalid">
+                                Наименование организации:
+                            </th>
+                            <td class="tdContent" colspan="2" styleFormTR [valid]="!formEdith.get('requisites.name')?.invalid">
+                                <input formControlName="name" class="inputValue" styleValid [valid]="!formEdith.get('requisites.name')?.invalid">
+                                <p class="error" *ngIf="formEdith.get('requisites.name')?.dirty && formEdith.get('requisites.name')?.invalid">
+                                    В наименовании организации допущена ошибка
+                                </p>
+                            </td>
+                        </tr>
+                        <tr class="trContent inside">
+                            <th class="thContent"  styleFormTR [valid]="!formEdith.get('requisites.inn')?.invalid">ИНН:</th>
+                            <td class="tdContent" styleFormTR [valid]="!formEdith.get('requisites.inn')?.invalid">
+                                <input formControlName="inn" class="inputValue" styleValid [valid]="!formEdith.get('requisites.inn')?.invalid">
+                                <p class="error" *ngIf="formEdith.get('requisites.inn')?.dirty && formEdith.get('requisites.inn')?.invalid">
+                                    ИНН введён неверно
+                                </p>
+                            </td>
+                        </tr>
+                        <tr class="trContent inside">
+                            <th class="thContent"  styleFormTR [valid]="!formEdith.get('requisites.kpp')?.invalid">КПП:</th>
+                            <td class="tdContent" styleFormTR [valid]="!formEdith.get('requisites.kpp')?.invalid">
+                                <input formControlName="kpp" class="inputValue" styleValid [valid]="!formEdith.get('requisites.kpp')?.invalid">
+                                <p class="error" *ngIf="formEdith.get('requisites.kpp')?.dirty && formEdith.get('requisites.kpp')?.invalid">
+                                    ИНН введён неверно
+                                </p>
+                            </td>
+                        </tr>  
+                    </div>                              
+                    <tr class="trContent inside">
+                        <th class="thContent" styleFormTR [valid]="!formEdith.get('businessAddress')?.invalid">Юридический адрес:</th>
+                        <td class="tdContent" styleFormTR [valid]="!formEdith.get('businessAddress')?.invalid">
+                            <div formGroupName="businessAddress">  
+                                <input formControlName="postalCode" class="inputValue" styleValid [valid]="!formEdith.get('businessAddress.postalCode')?.invalid"  placeholder="почтовый индекс">
+                                
+                                <input formControlName="city" class="inputValue" styleValid [valid]="!formEdith.get('businessAddress.city')?.invalid" placeholder="город">
+                                
+                                <input formControlName="street" class="inputValue" styleValid [valid]="!formEdith.get('businessAddress.street')?.invalid" placeholder="улица">
+                                
+                                <input formControlName="build" class="inputValue" styleValid [valid]="!formEdith.get('businessAddress.build')?.invalid" placeholder="дом">
+                            </div>
+                            <p class="error" *ngIf="formEdith.get('businessAddress')?.dirty && formEdith.get('businessAddress')?.invalid">
+                                Допущена ошибка при введении адреса
+                            </p>
+                        </td>
+                    </tr>               
+                </td>
+            </table>
+            <div class="submitBlock">              
+                <button  [ngClass]="{submitBtn:true, disabled: formEdith.invalid}"  type="submit" (submit)="submit()" [disabled]="formEdith.invalid" title="Нажмите, чтобы сохранить изменения">Сохранить изменения</button>
+            </div>
+        </form>
+   </div> 
+</ng-template>
+
+<!-- Версия при пользовательском режиме -->
+<ng-template #valueTemplate>
+     <div class="content"> 
+         <table *ngFor="let con of content$|async" class="contactContent">
+             <tr class="trContent inside">
+                 <th class="thContent">Название:</th>
+                 <td class="tdContent">{{con.nameOfTheOrganization}}</td>
+             </tr>
+             <tr class="trContent inside">
+                <th class="thContent">Короткое название:</th>
+                <td class="tdContent">{{con.shortName}}</td>
+            </tr>
+            <tr class="trContent">
+                <th class="thContent">Как с нами связаться:</th>
+                <td class="tdContentBack">
+                    <tr class="trContent inside">
+                        <th class="thContent">Телефон:</th>
+                        <td class="tdContent">{{con.telephone}}</td>
+                    </tr>
+                    <tr class="trContent inside">
+                        <th class="thContent">Факс:</th>
+                        <td class="tdContent">{{con.fax}}</td>
+                    </tr>
+                    <tr class="trContent inside">
+                        <th class="thContent">email:</th>
+                        <td class="tdContent"><a href=`mailto:${con.email}` class="tdEmail">{{con.email}}</a></td>
+                    </tr>
+                    <tr class="trContent inside">
+                        <th class="thContent">Физический адрес:</th>
+                        <td class="tdContent">{{con.actualAddress | actualAdress}}</td>
+                    </tr>
+                </td>
+            </tr>
+            <tr class="trContent">
+                <th class="thContent">Реквизиты:</th>
+                <td class="tdContentBack">
+                    <tr class="trContent inside">
+                        <th class="thContent">ОГРН:</th>
+                        <td class="tdContent">{{con.requisites.OGRN}}</td>
+                    </tr>
+                    <tr class="trContent inside">
+                        <td class="tdContent" colspan="2">{{con.requisites.Name}}</td>
+                    </tr>
+                    <tr class="trContent inside">
+                        <th class="thContent">ИНН:</th>
+                        <td class="tdContent">{{con.requisites.INN}}</td>
+                    </tr>
+                    <tr class="trContent inside">
+                        <th class="thContent">КПП:</th>
+                        <td class="tdContent">{{con.requisites.KPP}}</td>
+                    </tr>
+                    <tr class="trContent inside">
+                        <th class="thContent ">Юридический адрес:</th>
+                        <td class="tdContent">{{con.businessAddress | businessAdress}}</td>
+                    </tr>
+                </td>
+         </table>
+    </div> 
+</ng-template>

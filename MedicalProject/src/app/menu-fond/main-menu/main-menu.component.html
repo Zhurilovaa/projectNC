@@ -1,0 +1,229 @@
+<!-- Компонент, включающий в себя шапку сайта = меню навигации -->
+<header>
+    <div class="main">
+        <div class="logo">
+            <a routerLink="/" class="logotype">
+                <div><b>Фонд</b>НОНЦ</div>
+                <span>помощь онкобольным детям</span>
+            </a>
+        </div>
+        <div class="menu">
+            <nav class="top-menu">
+                <ul class="menu-main">
+                    <li class="menu_point">
+                        <a routerLink="/about"  routerLinkActive="activePage" [ngClass]="{menu_link:true, disabled: admin}">О фонде</a>
+                        <ul class="submenu">
+                            <li>
+                                <div [ngClass]="{submenu_link:true, disabled: admin}">
+                                    <a class="link" [routerLink]="['/about','aboutFond']">О фонде</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div [ngClass]="{submenu_link:true, disabled: admin}">
+                                    <a class="link"   [routerLink]="['/about','ourTeam']">Наша команда</a>
+                                </div>
+                            </li>
+                            <!--
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Экспертный совет</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Организационная структура фонда</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Благодарности</a>
+                                </div>
+                            </li>
+                            -->
+                            <li>
+                                <div [ngClass]="{submenu_link:true, disabled: admin}">
+                                    <a class="link_help" routerLink="/donateHelp">Помочь</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu_point">
+                        <a class="menu_link" routerLink="/news" routerLinkActive="activePage">Новости</a>
+                        <ul class="submenu">
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link" routerLink="/news">Новости фонда</a>
+                                </div>
+                            </li>
+                            <!--
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Истории</a>
+                                </div>
+                            </li>
+                            -->
+                        </ul>
+                    </li>
+                    <li class="menu_point">
+                        <a routerLink="/children" routerLinkActive="activePage" [ngClass]="{menu_link:true, disabled: admin}">Дети</a>
+                        <!-- <ul class="submenu">
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Нужна помощь</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Вы помогли</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Они победили</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Мы помним</a>
+                                </div>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <!-- 
+                    <li class="menu_point">
+                        <a class="menu_link" routerLink="/needhelp" routerLinkActive="activePage">Получить помощь</a>
+                        <ul class="submenu">
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Если вам нужна помощь</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Заказать такси</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Полезная информация</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li> 
+                -->
+                    <!-- <li class="menu_point">
+                        <a class="menu_link" routerLink="/projects" routerLinkActive="activePage">Проекты</a>
+                        <ul class="submenu">
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Программы фонда</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Акции и мероприятия</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Проекты партнёров</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Создать свой проект</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li> -->
+                    <!-- 
+                    <li class="menu_point">
+                        <a class="menu_link" routerLink="/reports" routerLinkActive="activePage">Отчеты</a>
+                        <ul class="submenu">
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Дети получили</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Годовые отчёты</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Финансовые отчеты</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    -->
+                    <!--
+                    <li class="menu_point">
+                        <a class="menu_link" routerLink="/partners" routerLinkActive="activePage">Партнёрам</a>
+                        <ul class="submenu">
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Наши друзья</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Как вы можете помочь?</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>Почему нам можно доверять?</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="submenu_link">
+                                    <a class="link"  href='/'>По вопросам сотрудничества</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    -->
+                    <li class="menu_point">
+                        <a class="menu_link" routerLink="/contacts" routerLinkActive="activePage">Контакты</a>
+                    </li>
+                    <li class="menu_point">
+                        <div class="help">
+                            <a routerLink="/donateHelp" [ngClass]="{ menu_link:true, disabled: admin}">Помочь</a>
+                            <ul class="submenu">
+                                <li>
+                                    <div [ngClass]="{submenu_link:true, disabled: admin}">
+                                        <a class="link"  routerLink="/donateHelp">Помочь детям</a>
+                                    </div>
+                                </li>
+                                <!-- 
+                                <li>
+                                    <div class="submenu_link">
+                                        <a class="link"  routerLink="/donateHelp">Подписка на добро</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="submenu_link">
+                                        <a class="link"  routerLink="/donateHelp">Стать волонтёром</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="submenu_link">
+                                        <a class="link"  routerLink="/donateHelp">Другие способы помочь</a>
+                                    </div>
+                                </li>
+                                 -->
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="menu_point" *ngIf="admin">
+                        <div class="help">
+                            <button [ngClass]="{ menu_link:true}" (click)="exitAdmin()">Выход</button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

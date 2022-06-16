@@ -1,0 +1,167 @@
+@import "/src/styles.less";
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    width: 80vw;
+    height: 100%;
+
+    background: @color_white;
+
+    padding: 15px;
+
+    .heading{
+        background-image: linear-gradient(45deg,  @color_lavender, @color_lavender_hover,);
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        font-size:2.3em;
+        font-family: 'Arimo', sans-serif;
+        font-weight: bold;
+
+        padding: 0px 15px 15px 0px;
+        padding-bottom: 30px;
+    }
+    .ngContent{
+        width: 100%;
+        .newsContent{
+            width: 100%;
+
+            padding: 10px;
+            padding-left: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+
+            .addOrEdithNews{
+                margin-top: 30px;
+                margin-bottom: 30px;
+                margin-left:10px;
+                margin-right:10px;
+
+                border-bottom: 1px solid @color_grey;
+                .inputBox{
+                    padding-top:10px;
+
+                    .textValue{
+                        width:70%;
+                        margin: 20px 10px;
+                        margin-top: 0px;
+                        padding: 10px 15px;
+    
+                        font-size: 1.1em;
+                        font-family: 'Arimo', sans-serif;
+    
+                        border-radius: 10px;
+                    }
+                    .valid{
+                        border: 1px solid @color_green;
+                    }
+                    .invalid{
+                        border: 1px solid @color_error_input;
+                        background: @color_error_back;
+                    }
+                    .error{
+                        width:100%;
+                        padding: 10px;
+                        margin: 5px;
+                        padding-bottom: 25px;
+    
+                        color: @color_error_input;
+                        font-family: 'Arimo', sans-serif;
+                        font-size: 1em;
+                        font-weight: bold;
+    
+                        text-align: left;
+    
+                    }
+                } 
+                .inside{
+                    &:hover{
+                        background: @color_back_green;
+                        color: @color_lavender_hover;
+                        .thContent{
+                            color:@color_lavender_hover;
+                        }
+                    }
+                }
+                .errorTR{
+                    background: @color_back_yellow;                    
+                    &:hover{
+                        background: @color_back_yellow;
+                    }
+                    .thContent{
+                        color:@color_error_input;
+                    }
+                }
+            }
+            .edith{
+                border: 0px;
+            }
+            .headForm{
+                font-size: 1.5em;
+                font-family: 'Arimo', sans-serif;
+                color: @color_lavender_hover;
+                text-shadow: 2px 4px 3px @color_lavender;
+                font-weight: bold;
+
+                margin-bottom: 15px;                    
+            }
+            .errorHead{
+                color:@color_error_input;
+                text-shadow: 2px 4px 3px @color_error_back;
+            }
+            .submitBlock{
+                .submitBtn{
+                    margin: 10px;
+                    padding: 15px 10px;
+
+                    margin-bottom: 50px;
+
+                    font-family: 'Arimo', sans-serif;
+                    font-size: 1.1em;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+
+                    background: @color_green;
+                    color: @color_text_grey;
+                    border-radius: 10px;
+
+                    transition: .3s linear;
+
+                    box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, .2);
+
+                    &:hover{
+                        background: @color_lavender_text;
+                        color: @color_lavender_hover;
+                    }
+
+                }
+                .disabled{
+                    cursor:not-allowed;  
+                    background-color: @color_grey;
+                    color: @color_text_grey;    
+                    &:hover{
+                        background-color: @color_history;
+                        color: white;
+                    }  
+                }
+            }
+    
+        }
+        .admin{
+            background: @color_back_input;
+            border-radius: 10px;
+        }
+    }
+    
+
+
+}

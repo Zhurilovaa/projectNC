@@ -1,0 +1,61 @@
+<div class="main">
+    <!-- <div class="childInfo" *ngFor="let ch of childId$|async">
+        <dynamic-child [childCurr]="ch"></dynamic-child>
+    </div> -->
+    <!-- Реактивная форма внесения пожертвований-->
+    <div class="form">
+        <form novalidate [formGroup]="formChild" (ngSubmit)="sentDonate()">  
+
+            <div class="inputDonateForm">
+                <div class="inputDonateFormText">
+                Назначение пожертвования: 
+                </div>
+                <input  type="text" class="inputInForm" [disabled]="true" value="Благотворительное пожертвование">
+            </div>
+
+            <div class="inputDonateForm">
+                <div class="inputDonateFormText">
+                Кому предназначается: 
+                </div>
+
+                <div *ngFor="let ch of childId$|async">
+                    <input  type="text" class="inputInForm" [disabled]="true" [value]="getNameChild(ch)">
+                 
+                    <div *ngIf="(ch.needSum-ch.donatSum)>0"  class="message">
+                        Осталось собрать всего {{ch.needSum-ch.donatSum}} руб. Ваша помощь важна.
+                    </div>
+                    <div *ngIf="(ch.needSum-ch.donatSum)<=0"  class="message save">
+                        Необходимая сумма уже собрана, но вы можете внести пожертвования в счёт будущих нужд в лечении!
+                    </div>            
+                </div>
+            </div>
+
+            <div class="inputDonateForm">
+                <div class="inputDonateFormText">
+                Внести пожертвование этому ребёнку:
+                </div>
+                <input  type="number" formControlName="donate" class="inputDonate" placeholder="Введите сумму">
+            </div>
+
+            <p *ngIf="formChild.get('donate')?.dirty && formChild.get('donate')?.invalid"
+                class="error">Сумма платежа предусмотрена в границах: 0.1 руб. - 10 000 руб.
+            </p>
+
+            <div class="helpChild" >
+                <button  [ngClass]="{helpBtn:true, disabled: formChild.invalid}" type="submit" (click)="setOpenPopUpSucsses()" [disabled]="formChild.invalid">Отправить</button>
+            </div>            
+        </form>
+    </div>    
+</div>
+
+<div class="popup_bg" *ngIf="( getPopUpSucsses()=== true)">
+    <div class="popup">
+        <div class="phrase">
+           <p>Большое спасибо за вашу помощь, она очень ценна!</p> 
+        </div>
+        <div class="okBtnBlock">
+            <button  class="okBtn" type="submit" (click)="resetMyForm()">спасибо</button>
+        </div>
+        
+    </div>
+</div>

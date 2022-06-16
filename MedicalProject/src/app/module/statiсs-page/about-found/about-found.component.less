@@ -1,0 +1,195 @@
+@import "/src/styles.less";
+@import url('https://fonts.googleapis.com/css?family=Arimo'); 
+
+.main_about_fond{
+    display: flex;
+    flex-direction: column;
+    //justify-content: center;
+    align-items: center; 
+    width: 90vw;
+
+    //border: 1px solid black;
+
+    .about_fond_name{
+        width:100%;
+        //min-height: 40vh;
+
+        background: radial-gradient(60% 60%, @color_lavender, @color_white);
+
+        display: flex;
+        flex-direction: column;
+        //justify-content:flex-start;
+        align-items: center;
+
+        //border: 1px solid black;
+
+        .fond_name{
+            width: 70vw;
+            height: 20vh;
+            display: flex;
+            flex-direction: column;            
+            align-items: center;
+            justify-content: center;
+
+            margin: 5vh;
+            margin-bottom: 0;
+            
+            //border: 1px solid black;
+
+            .fond{
+
+                //border: 1px solid black;
+
+                width: 100%;
+
+                display: flex;
+                justify-content: center;
+
+                font-family: 'Arimo', sans-serif;
+                font-size: 1.5em;
+                font-weight: bold;
+                color: @color_text_grey;
+                letter-spacing: 2.5em;
+            }
+            .nonc{
+                //border: 1px solid black;
+
+                width: 100%;
+
+                display: flex;
+                justify-content: center;
+
+                font-family: 'Arimo', sans-serif;
+                font-size: 3em;
+                font-weight: bold;
+                color: @color_text_green;
+                letter-spacing: 1em;
+            }
+        }
+        .quote{
+
+            //border: 1px solid black;
+
+            width: 70vw;
+            display: flex;            
+            align-items: center;
+            justify-content: center;
+
+            padding: 1%;
+
+            line-height: 150%;
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            text-align: center;
+            font-family: 'Arimo', sans-serif;
+            font-weight: bold;
+            color: #505050;
+
+            .imp{
+                color:@color_orange;
+                font-size:large;
+            }
+            
+        }
+    }
+
+    .infoFond{
+        width: 90%;
+        //height: 45%; 
+        margin-top: 2%;
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items:flex-start;
+        //background: @color_lavender; 
+        //padding: 2%;
+
+        .infoFond_content {
+            
+            width:75%;
+            align-self: stretch;
+
+            margin-right: 1%;
+            margin-left: 1%;
+            .visibleContent{
+
+                display: flex;
+                flex-flow: column;
+                justify-content: space-between;
+                align-items: center;
+                .title {
+                    padding: 2%;
+                    margin: 0 auto;
+    
+                    .titleF {
+                        font-family: 'Arimo', sans-serif;
+                        font-size: 1.5em;
+                        font-weight: bold;
+                        color: @color_orange;
+                    }
+                }
+    
+                .text {
+                    width: 100%;
+    
+                    line-height: 150%;
+                    font-size: 1.1em;
+                    //letter-spacing: 2px;
+                    text-align: center;
+                    font-family: 'Arimo', sans-serif;
+                    font-weight: bold;
+                    color: @color_text_grey;
+                    white-space: 1.6em;
+    
+                    .key {
+                        color: @color_orange;
+                        width: 70%;
+                        margin: 0 auto;
+                        font-size: large;
+                    }
+                    img{
+                        max-width: 100%;
+                        margin: 0 auto;
+                    }
+                }
+            }            
+        }
+        .menuFond{
+            width:20%;
+            align-self: stretch;
+
+            border-left: 1px solid @color_text_green;
+
+            //padding-top: 2% ;
+
+            .submenu{                
+                text-align: center;
+                background: @color_white;
+                border-radius: 5px;
+                .submenu_link { 
+                    font-family:  'Arimo', sans-serif;
+                    //white-space: nowrap;
+                    font-size: 1.3em;
+                    .link{                        
+                        color: @color_text_grey;
+                    }
+                    font-weight: bold;
+                    padding: 10px 10px;
+                    letter-spacing: 2px;
+                    transition: .3s linear;
+                    &:hover {
+                        background: rgba(0,0,0,.3);
+                        .link,.link_help{
+                            color:@color_text_green; 
+                        }
+                    }  
+                    .link_help{
+                        font-size: larger;
+                        color: @color_orange;
+                    }                                     
+                } 
+            }            
+        }
+    }
+}
