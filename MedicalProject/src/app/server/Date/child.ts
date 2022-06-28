@@ -1,6 +1,5 @@
-//для работы с информацией как с объектами
 export class Child{
-    id: number; //возможно лучше string
+    id: number; 
     name: string;
     patronym: string;
     surname: string;
@@ -33,15 +32,10 @@ export class Child{
     }
 }
 
-//для запроса PUT
 export class UpdateChild{
-    //здесь нужно обозначить какие поля мы ожидаем в этом объекте
-    //учитывая, что мы их не меняем, делаем сразу с модификатором readonly
-    //idChild: number;
     donateSum: number;
 
-    constructor (/*id:number = -1,*/ don:number = 0){
-        //this.idChild = id;
+    constructor (don:number = 0){
         this.donateSum = don;
     }
 }

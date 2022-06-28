@@ -1,21 +1,13 @@
 import { HttpClient } from "@angular/common/http";
-
 import { Injectable } from "@angular/core";
-
 import { Store } from "@ngrx/store";
-
 import { Observable } from "rxjs";
 
+import { environment } from "src/environments/environment";
 import { AppState } from "src/app/store/state/app.state";
-
 import { SetContactContentAction, SetNewsContentAction } from "src/app/store/actions/config.actions";
 import { selectContactConfig, selectNewsConfig } from "src/app/store/selectors/config.selectors";
-
-import { environment } from "src/environments/environment";
-
 import { Contacts, News, AdminLogin } from "../Date/config_date";
-
-
 
 @Injectable()
 export class ConfigService{
@@ -35,7 +27,6 @@ export class ConfigService{
         });       
     }
 
-    //получение контента
     getСontactContent():Observable<Contacts[]>{
         this.http.get<Contacts[]>(`${this.configUrl}/contact`).subscribe( (conTemp) => {
             this.contactContent = conTemp;
@@ -51,7 +42,6 @@ export class ConfigService{
         return this.store.select(selectNewsConfig);
     }
 
-    //отправка изменений
     edithContactContent(body: Contacts){
 
         this.http.put<Contacts[]>(`${this.configUrl}/contact`, body).subscribe( (newContent) => {
@@ -59,7 +49,6 @@ export class ConfigService{
         })
         return 1;
     }
-
     edithNewsContent( body: News[]){
 
         this.http.put<News[]>(`${this.configUrl}/news`, body).subscribe( (newContent) => {
@@ -68,8 +57,6 @@ export class ConfigService{
         return 1;
     }
 
-
-    //добавление новых новостей
     addNewNews(body: News){
 
         this.http.post<News[]>(`${this.configUrl}/news`, body).subscribe( (newContent) => {
@@ -78,7 +65,6 @@ export class ConfigService{
         return 1;
     }
 
-    //удаление новости по id
     deleteNewsIdContent(param: string){
         
         this.http.delete<News[]>(`${this.configUrl}/${param}`).subscribe( (newContent) => {

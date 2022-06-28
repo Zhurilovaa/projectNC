@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
 import { FondService } from '../server/service/fond.service';
 
 @Component({
@@ -8,25 +8,7 @@ import { FondService } from '../server/service/fond.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainPageComponent{
-  //childList: Child[] = [];
-
-  /*child: Child = {
-      id: 0,
-      name: "***",
-      patronym: "****",
-      surname: "*****",
-      needSum: 1,
-      donatSum: 0,
-  };*/
 
   constructor(private fondService: FondService, private ref: ChangeDetectorRef){}
-  /*
-  addChild(newCh: Child){
-    this.fondService.addData(newCh);
-  }
-
-  ngOnInit(){
-    this.childList = this.fondService.getData();
-  }*/
 
 }

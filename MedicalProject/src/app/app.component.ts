@@ -1,7 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-root',
@@ -10,10 +7,12 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent { 
+
   getAdminWork():boolean{
     if(sessionStorage.getItem('admin') === 'true'){
       return true;
     }
     return false;
   }
+  
 }

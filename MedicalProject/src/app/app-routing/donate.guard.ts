@@ -3,8 +3,6 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable, skip, take } from "rxjs";
 import { FondService } from "../server/service/fond.service";
 
-//зфщитник на переход на форму по несуществующему id
-
 @Injectable({
     providedIn: "root",
   })
@@ -13,7 +11,6 @@ export class DonateInGuard implements CanActivate{
     constructor(private fserv: FondService,  public router: Router){}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-        //получаем id
         const idParam = +(route.params['id']);
         const childL = this.fserv.getAllChildren().pipe(
             skip(1),

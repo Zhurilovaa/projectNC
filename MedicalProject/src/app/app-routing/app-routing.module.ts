@@ -15,11 +15,6 @@ import { NewsFondComponent } from '../module/statiсs-page/news-fond/news-fond.c
 import { ConfigOutGuard } from './config.guard';
 import { DonateInGuard } from './donate.guard';
 
-//import { GetHelpFondComponent } from '../module/statiсs-page/get-help-fond/get-help-fond.component';
-//import { PartnersFondComponent } from '../module/statiсs-page/partners-fond/partners-fond.component';
-//import { ProjectFondComponent } from '../module/statiсs-page/project-fond/project-fond.component';
-//import { ReportsFondComponent } from '../module/statiсs-page/reports-fond/reports-fond.component';
-
 const routes: Routes = [ 
   {
     path: 'about/:content',
@@ -51,7 +46,6 @@ const routes: Routes = [
     path: 'donateHelp/:id',
     component: FormDonateComponent,
     canActivate: [DonateInGuard],
-    //нужен защитник на переход!
   },
   {
     path: 'donateHelp',
@@ -66,8 +60,6 @@ const routes: Routes = [
     component: MainPageComponent,
   },
 ];
-
-//export const routing = RouterModule.forRoot(routes);
 
 @NgModule({
   imports: [   

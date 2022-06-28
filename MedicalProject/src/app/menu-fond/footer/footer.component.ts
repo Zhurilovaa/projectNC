@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy,ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy,ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
   selector: 'menu-footer',
@@ -6,11 +6,8 @@ import { ChangeDetectionStrategy,ChangeDetectorRef, Component, OnInit } from '@a
   styleUrls: ['./footer.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent{
 
   constructor(private ref: ChangeDetectorRef) { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
 
+import { HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule} from './app-routing/app-routing.module';
 import { StatiсsPageModule } from './module/statiсs-page/statiсs-page.module';
@@ -19,11 +19,13 @@ import { ConfigService } from './server/service/config.service';
 
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { appReducers } from './store/state/app.state';
-import { handleLog } from './store/reducers/logger';
 import { EffectsModule } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+
+import { appReducers } from './store/state/app.state';
+import { handleLog } from './store/reducers/logger';
 import { ConfigEffects } from './store/effects/config.effects';
+
 import { ConfigOutGuard } from './app-routing/config.guard';
 import { DonateInGuard } from './app-routing/donate.guard';
 
@@ -37,16 +39,16 @@ import { DonateInGuard } from './app-routing/donate.guard';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule, //работа с сервером
-    StatiсsPageModule, //статичные страницы сайта
-    DynamicPageServModule, //динамические страницы сайта
-    LoginPanelModule, //админ панель
+    HttpClientModule,
+    StatiсsPageModule,
+    DynamicPageServModule,
+    LoginPanelModule,
     RouterModule,
     StoreModule.forRoot(appReducers, {
       metaReducers: [handleLog]
     }),
     EffectsModule.forRoot([ConfigEffects]),
-    AppRoutingModule,  //маршуртизация
+    AppRoutingModule,
   ],
   providers: [
     ConfigOutGuard,

@@ -1,11 +1,7 @@
-//для admin panel
-
-
 export interface AdminLogin{
     login: string,
     password: string,
 }
-
 
 export interface News{
     id: string,
@@ -13,14 +9,7 @@ export interface News{
     text: string,
 }
 
-export interface ActualAddress{
-    postalCode: number,
-    city: string,
-    street: string,
-    build: number,
-    office:  number,
-}
-export interface BusinessAddress{
+export interface Address{
     postalCode: number,
     city: string,
     street: string,
@@ -41,7 +30,7 @@ export interface Contacts{
     telephone: string,
     fax: string,
     email: string,
-    actualAddress: ActualAddress,
-    businessAddress:BusinessAddress,
+    actualAddress: Address,
+    businessAddress: Address,
     requisites: Requisites,        
 }

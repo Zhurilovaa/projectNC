@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppRoutingModule} from 'src/app/app-routing/app-routing.module';
 
@@ -11,13 +12,7 @@ import { DonateHelpComponent } from './donate-help/donate-help.component';
 import { FormDonateComponent } from './form-donate/form-donate.component';
 
 import { FondService } from 'src/app/server/service/fond.service';
-import { HttpClient } from '@angular/common/http';
-import { Store } from '@ngrx/store';
 
-import { StoreModule } from '@ngrx/store';
-import { appReducers } from 'src/app/store/state/app.state';
-import { handleLog } from 'src/app/store/reducers/logger';
-import { EffectsModule } from '@ngrx/effects';
 import { FondEffects } from 'src/app/store/effects/fond.effects';
 
 @NgModule({
@@ -39,7 +34,6 @@ import { FondEffects } from 'src/app/store/effects/fond.effects';
   ],
   providers: [{
     provide: FondService,
-    //deps: [HttpClient, Store]
   }]
 })
 export class DynamicPageServModule { }

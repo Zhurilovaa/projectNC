@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input, Renderer2 } from "@angular/core";
+import { Directive, ElementRef, Input, Renderer2 } from "@angular/core";
 
 @Directive({
     selector: '[styleValid]',
@@ -8,7 +8,7 @@ export class InputValidStyleDirective{
     @Input() valid: boolean = true;    
     @Input() dirty?: boolean =true;
 
-    constructor(private renderer: Renderer2,private el: ElementRef){}
+    constructor(private renderer: Renderer2, private el: ElementRef){}
     
     ngOnChanges(): void {
         if(this.dirty){
