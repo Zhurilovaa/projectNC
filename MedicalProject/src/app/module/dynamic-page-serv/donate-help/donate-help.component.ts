@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy,ChangeDetectorRef, Component, OnInit } from '@a
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
 import { Child } from 'src/app/server/Date/child';
 import { FondService } from 'src/app/server/service/fond.service';
 import { AppState } from 'src/app/store/state/app.state';
@@ -21,17 +22,12 @@ export class DonateHelpComponent implements OnInit{
   public emptyInput: boolean[] = [true,true,true];
   public count: number = 0;
 
-  //поиск ребёнка
-  public isAnyChildFind = true;
-
   //видимость окон
   public open_exit_windowChoise = false;
   public open_exit_windowHistory = false;
   public childHistory = new Child();
 
-  constructor(public fserv: FondService, private store: Store<AppState>,private router: Router, private ref: ChangeDetectorRef) {}
-
-  
+  constructor(public fserv: FondService, private store: Store<AppState>,private router: Router, private ref: ChangeDetectorRef) {}  
 
   ngOnInit(): void {
     this.childList$ = this.fserv.getAllChildren();

@@ -32,7 +32,6 @@ export class NewsFondComponent implements OnInit, DoCheck, ComponentCanDeactivat
 
   ngDoCheck(): void{
     this.adminWork = !!sessionStorage.getItem('admin'); 
-    //по другому пока не перерисовывается компонент 
     this.ref.markForCheck(); 
   }
 

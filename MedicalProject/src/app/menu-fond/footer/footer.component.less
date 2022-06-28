@@ -1,64 +1,60 @@
 @import "/src/styles.less";
 
-a {
-    text-decoration: none;
+.text(@color, @size){
+    color: @color;
+    font-family: 'Arimo', sans-serif;
+    font-size: @size;
 }
-footer{
-    //position:relative;
-    //bottom: 0;
-    //align-self: center;
-    //border: 1px solid black;     
+
+footer{    
     background: linear-gradient(@color_white, @color_green);  
+
     display: flex;
     justify-content: center; 
+
     .info_fond{
         width: 90%;
         padding: 2%;
-        //border: 1px solid black; 
-        
+                    
         display: flex;
         flex-flow: row wrap;
         justify-content: space-around;
+
         .info_fond__name{
+
             .head{
                 letter-spacing:1px;
-                font-size: 250%;
-                color:@color_lavender_text;
-                //text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-                text-shadow: 2px 1px 1px @color_green;
+                font-family: 'Russo One', sans-serif;
                 font-weight: 600;
+                font-size: 2.5em;
+
+                color:@color_lavender_text;
+                text-shadow: 5px 1px 1px @color_green;
+                
             }
             .text{
-                font-size: 170%;
-                transition-duration: 0.5s; 
+                font-size: 1.7em;
                 letter-spacing: 2px;
                 font-family: 'Arimo', sans-serif;
                 font-weight: bold;
+
+                transition-duration: 0.5s; 
                 color: @color_text_green;
                 
             }
         }
         .contact{
             .number {
-                color: #000;
-                font-size: 16px;
-                //font-weight: 900;
                 .phone {
-                    color: @color_text_green;
-                    font-family: 'Arimo', sans-serif;
-                    font-size: 1.1em;
+                    .text(@color_text_green,1.3em);
                 }
             }
             .index{
-                color: @color_text_grey;
-                font-family: 'Arimo', sans-serif;
-                font-size: 1.1em; 
+                .text(@color_text_grey,1.1em);
             }     
             .email{
                 .e-mail{                    
-                    color: @color_orange;
-                    font-family: 'Arimo', sans-serif;
-                    font-size: 1.1em;
+                    .text(@color_orange,1.1em);
                 }
             }       
         }

@@ -3,17 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AboutFoundComponent } from './about-found/about-found.component';
-import { ReportsFondComponent } from './reports-fond/reports-fond.component';
-import { GetHelpFondComponent } from './get-help-fond/get-help-fond.component';
-import { ProjectFondComponent } from './project-fond/project-fond.component';
 import { NewsFondComponent } from './news-fond/news-fond.component';
 import { NewsBlockComponent } from './news-block/news-block.component';
 import { ContactsFondComponent } from './contacts-fond/contacts-fond.component';
-import { PartnersFondComponent } from './partners-fond/partners-fond.component';
 
 import { AppRoutingModule} from 'src/app/app-routing/app-routing.module';
 
-import { ActualAdressPipe, BusinessAdressPipe } from 'src/app/pipes/adress.pipe';
+import { ActualAdressPipe, BusinessAdressPipe } from 'src/app/pipes/address.pipe';
 import { InputValidStyleDirective, StyleFormHeadDirective, StyleFormTrDirective } from 'src/app/directives/input.directive';
 import { DateNewsPipe } from 'src/app/pipes/date.pipe';
 
@@ -21,12 +17,8 @@ import { DateNewsPipe } from 'src/app/pipes/date.pipe';
 @NgModule({
   declarations: [
     AboutFoundComponent,
-    ReportsFondComponent,
-    GetHelpFondComponent,
-    ProjectFondComponent,
     NewsFondComponent,
     ContactsFondComponent,
-    PartnersFondComponent,
     ActualAdressPipe,
     BusinessAdressPipe,
     DateNewsPipe,
@@ -43,12 +35,8 @@ import { DateNewsPipe } from 'src/app/pipes/date.pipe';
   ],
   exports:[
     AboutFoundComponent,
-    ReportsFondComponent,
-    GetHelpFondComponent,
-    ProjectFondComponent,
     NewsFondComponent,
     ContactsFondComponent,
-    PartnersFondComponent,
   ],
 })
 export class StatiсsPageModule { }

@@ -1,7 +1,5 @@
 <div class="main_about_fond">
-
     <div class="about_fond_name">
-
         <div class="fond_name">
             <div class="fond">
                 <p>ФОНД</p>
@@ -10,7 +8,6 @@
                 <p>НОНЦ</p>
             </div>
         </div>
-
         <div class="quote">
             <p>Благодаря помощи неравнодушных людей нам удается <span class="imp">помочь людям</span>, оказавшимся в беде, <span class="imp">обрести надежду!</span> 
                 И мы будем продолжать это делать, пока у нас есть единомышленники,
@@ -22,7 +19,6 @@
 
     <div class="infoFond">
         <div class="infoFond_content">
-            <!-- Позже контент разнесу по разным компонентам -->
             <div class="visibleContent"  *ngIf="(content|async) === 'aboutFond'">
                 <div class="title">
                     <p class="titleF">О ФОНДЕ</p>
@@ -105,32 +101,7 @@
                         <a class="link" [routerLink]="['/about','ourTeam']" >Наша команда</a>
                     </div>
                 </li>
-                <li>
-                    <div class="submenu_link">
-                        <a class="link">Экспертный совет</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="submenu_link">
-                        <a class="link" >Организациооная структура фонда</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="submenu_link">
-                        <a class="link">Самые частые вопросы</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="submenu_link">
-                        <a class="link">Благодарности</a>
-                    </div>
-                </li>
             </ul>
         </div>
     </div>
 </div>
-
-<!-- (click)="changeContent('expertCouncil')" 
-(click)="changeContent('structFond')"
-(click)="changeContent('frequentQuestions')"
-(click)="changeContent('thanks')"-->

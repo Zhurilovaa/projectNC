@@ -16,35 +16,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-form.component.less'],  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginFormComponent /*implements ComponentCanDeactivate */{
+export class LoginFormComponent{
 
-  //private dataAdmin: Observable<Admin>;
   private popUpSucsses: boolean = false;
-  //private popUpNotSucsses: boolean = false;
 
-  //реактивная форма
   loginForm: FormGroup = new FormGroup({
     adminName: new FormControl(null, [Validators.required, Validators.minLength(1), Validators.pattern("[a-zA-Z]*")]),
     adminPass: new FormControl(null, [Validators.required, Validators.minLength(1), Validators.pattern("[0-9 a-zA-Z]*")])
   });
 
   constructor(private store: Store<AppState>, private configServ: ConfigService, private route: Router, private ref: ChangeDetectorRef) { }
-
-  /*canDeactivate() : boolean | Observable<boolean>{
-     
-    if(!this.sucssesOut()){
-        return confirm("Вы хотите покинуть страницу?");
-    }
-    else{
-      console.log("я здесь");
-        return true;
-    }
-  }*/
-
-  /*
-  sucssesOut(){
-    return sessionStorage.getItem('admin') ? true: false;
-  }*/
 
   login(): void{
     if (this.loginForm.valid){
@@ -65,11 +46,7 @@ export class LoginFormComponent /*implements ComponentCanDeactivate */{
   getPopUpSucsses(): boolean{
     return this.popUpSucsses;
   }
-
-  /*getPopUpNotSucsses(): boolean{
-    return this.popUpNotSucsses;
-  }*/
-
+  
   resetMyForm(): void{
     this.popUpSucsses = false;
     this.loginForm.reset();

@@ -13,16 +13,9 @@ export class AboutFoundComponent implements OnInit{
 
   public content: Observable<string>  = of("");
 
-  //private contetnSubscription:  Subscription;
-
-  constructor(private fondService: FondService, private route: ActivatedRoute, private ref: ChangeDetectorRef){
-  }  
+  constructor(private fondService: FondService, private route: ActivatedRoute, private ref: ChangeDetectorRef){}  
 
   ngOnInit(): void{
-    
-    //this.contetnSubscription = this.route.params.subscribe((params)=> this.content = params['content']);
     this.content = this.route.params.pipe(map( (params) => params['content']));
-    console.log(this.content + 'конструктор');   
-
   } 
 }

@@ -12,11 +12,6 @@ export class MainMenuComponent{
 
   constructor(private ref: ChangeDetectorRef){}
 
-/*
-  getAdminWork():boolean{
-    return this.admin;
-  }
-*/
   exitAdmin(){
     if(sessionStorage.getItem('admin')){
       sessionStorage.removeItem('admin');

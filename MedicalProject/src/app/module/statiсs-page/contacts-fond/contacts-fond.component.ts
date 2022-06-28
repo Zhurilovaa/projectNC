@@ -81,13 +81,11 @@ export class ContactsFondComponent implements OnInit, DoCheck, ComponentCanDeact
 
   ngDoCheck(): void{
    this.adminWork = !!sessionStorage.getItem('admin'); 
-   //по другому пока не перерисовывается компонент 
    this.ref.markForCheck(); 
 
   }
 
   submit(){
-    //скомпановать данные и отправить
     if(this.formEdith.dirty && this.formEdith.valid){
       const nameOfTheOrganizationValue: string = this.formEdith.value.nameOfTheOrganization;
       const shortNameValue: string = this.formEdith.value.shortName;

@@ -1,17 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { concatMap, pluck, map  } from "rxjs";
-import { FondService } from "src/app/server/service/fond.service";
-
 import { Injectable } from "@angular/core";
-
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 
+import { environment } from "src/environments/environment";
+import { FondService } from "src/app/server/service/fond.service";
 import { DONATE_CHILD, SetAllChildrenAction } from "../actions/fond.actions";
 import { AppState } from "../state/app.state";
-
-import { environment } from "src/environments/environment";
-
 import { Child, UpdateChild } from "src/app/server/Date/child";
 
 @Injectable({providedIn: "root"})

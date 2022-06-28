@@ -1,13 +1,14 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef,Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef,Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Child, UpdateChild } from 'src/app/server/Date/child';
-import { FondService } from 'src/app/server/service/fond.service';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/store/state/app.state';
 import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+
+import { Child, UpdateChild } from 'src/app/server/Date/child';
+import { FondService } from 'src/app/server/service/fond.service';
+import { AppState } from 'src/app/store/state/app.state';
 
 @Component({
   selector: 'app-form-donate',
@@ -21,7 +22,6 @@ export class FormDonateComponent implements OnInit {
 
   popUpSucsses: boolean = false;
 
-  //реактивная форма
   formChild: FormGroup = new FormGroup({
     donate: new FormControl(null, [Validators.required, this.donateRangeValidator])
   });
@@ -55,7 +55,6 @@ export class FormDonateComponent implements OnInit {
   sentDonate(): void {
     if (this.formChild.valid){
       const donateCurr = +(this.formChild.value.donate);
-      // создаем новый объект updateChild
       const currChild = new UpdateChild(donateCurr);
       let id = this.activateRoute.snapshot.params['id'];
       console.log('id = '+ id.toString());
